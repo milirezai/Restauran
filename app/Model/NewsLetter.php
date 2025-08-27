@@ -1,7 +1,8 @@
 <?php
-namespace App;
+namespace App\Model;
 
 use System\Database\ORM\Model;
+use System\Database\Traits\HasSoftDelete;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,7 @@ use System\Database\ORM\Model;
 
 class NewsLetter extends Model
 {
+    use HasSoftDelete;
 
     /*
     |--------------------------------------------------------------------------

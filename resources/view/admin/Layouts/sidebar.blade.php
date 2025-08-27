@@ -17,13 +17,15 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
             <li class=" navigation-header"><span>لینک ها</span></li>
-            <li class=" nav-item"><a href="<?php /* route('admin.index') */ ?>"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">خانه</span></a></li>
-            <li class=" nav-item "><a href="<?php /* route('admin.category.index') */ ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">دسته بندی</span></a></li>
-            <li class=" nav-item "><a href="<?php /* route('admin.blog.index') */ ?>"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">بلاگ</span></a></li>
-            <li class=" nav-item"><a href="<?php /* route('admin.ads.index') */ ?>"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">آگهی</span></a></li>
-            <li class=" nav-item"><a href="<?php /* route('admin.comment.index') */ ?>"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">نظرات</span></a></li>
-            <li class=" nav-item"><a href="<?php /* route('admin.users.index') */ ?>"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">کاربران</span></a></li>
-            <li class=" nav-item"><a href="<?php /* route('index') */ ?>"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">بازگشت به سایت</span></a></li>
+            <li class=" nav-item"><a href="<?=  route('admin.index')  ?>"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">خانه</span></a></li>
+            <li class=" nav-item "><a href="<?=  route('admin.category.index')  ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">دسته بندی</span></a></li>
+            <li class=" nav-item "><a href="<?=  route('admin.product.index')  ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">محصولات</span></a></li>
+            <li class=" nav-item "><a href="<?=  route('admin.orders.index')  ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">سفارشات</span></a></li>
+            <li class=" nav-item "><a href="<?=  route('admin.newsLetter.index')  ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">خبرنامه</span></a></li>
+            <li class=" nav-item "><a href="<?=  route('admin.ourTeam.index')  ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">تیم ما</span></a></li>
+            <li class=" nav-item "><a href="<?=  route('admin.contact.index')  ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">تماس با ما</span></a></li>
+            <li class=" nav-item "><a href="<?=  route('admin.users.index')  ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">کاربران</span></a></li>
+            <li class=" nav-item"><a href="<?=  route('index')  ?>"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">بازگشت به سایت</span></a></li>
 
         </ul>
     </div>

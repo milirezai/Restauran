@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('head-tag')
-<title>ادمین | ساخت مقاله جدید</title>
+<title>ادمین | ساخت محصول جدید</title>
 @endsection
 @section('content')
 <div class="content-header row">
@@ -12,24 +12,24 @@
          <div class="col-12">
             <div class="card">
                <div class="card-header">
-                  <h4 class="card-title">پست</h4>
-                  <span><a href="<?= route('admin.blog.index') ?>" class="btn btn-success">بازگشت</a></span>
+                  <h4 class="card-title">محصول</h4>
+                  <span><a href="<?= route('admin.product.index') ?>" class="btn btn-success">بازگشت</a></span>
                </div>
                <div class="card-content">
                   <div class="card-body card-dashboard">
-                     <form class="row" action="<?= route('admin.blog.store') ?>" method="post" enctype="multipart/form-data">
+                     <form class="row" action="<?= route('admin.product.store') ?>" method="post" enctype="multipart/form-data">
                         <div class="col-md-6">
                            <fieldset class="form-group">
-                              <label for="title">عنوان</label>
-                              <input value="<?= old('title') ?>" name="title" type="text" id="title" class="form-control <?= errorClass('title') ?>" placeholder="نام ...">
-                           <?= errorText('title') ?>
+                              <label for="name">عنوان</label>
+                              <input value="<?= old('name') ?>" name="name" type="text" id="name" class="form-control <?= errorClass('name') ?>" placeholder="نام ...">
+                           <?= errorText('name') ?>
                            </fieldset>
                         </div>
                         <div class="col-md-6">
                            <fieldset class="form-group">
-                              <label for="published_at">تاریخ انتشار</label>
-                              <input value="<?= empty(old('published_at')) ? '' : old('published_at'); ?>" name="published_at" type="date" id="published_at" class="form-control <?= errorClass('published_at') ?>">
-                               <?= errorText('published_at') ?>
+                              <label for="price">قیمت </label>
+                              <input value="<?= empty(old('price')) ? '' : old('price'); ?>" name="price" type="text" id="price" class="form-control <?= errorClass('price') ?>">
+                               <?= errorText('price') ?>
                            </fieldset>
                         </div>
                         <div class="col-md-6">
@@ -42,7 +42,7 @@
                         <div class="col-md-6">
                            <fieldset class="form-group">
                               <div class="form-group">
-                                 <label for="cat_id">دسته</label>
+                                 <label for="cat_id">دسته بندی</label>
                                  <select name="cat_id" class="select2 form-control <?= errorClass('cat_id') ?>">
                                      <?php foreach($categories as $categorySelect) {?>
                                     <option value="<?= $categorySelect->id ?>" <?= !empty(old('cat_id')) && $categorySelect->id === old('cat_id') ? 'selected' : '' ?>>
@@ -55,9 +55,9 @@
                         </div>
                         <div class="col-md-12">
                            <section class="form-group">
-                              <label for="body">متن</label>
-                              <textarea class="form-control" id="body" rows="5" name="body" placeholder="متن ..."><?= old("body") ?></textarea>
-                               <?= errorText('body') ?>
+                              <label for="description">توضیحات</label>
+                              <textarea class="description-control" id="description" rows="5" name="description" placeholder="توضیحات ..."><?= old("description") ?></textarea>
+                               <?= errorText('description') ?>
                            </section>
                         </div>
                         <div class="col-md-6">
@@ -77,6 +77,6 @@
 @section('script')
 <script src="<?= asset('ckeditor/ckeditor.js') ?>"></script>
 <script type="text/javascript">
-    CKEDITOR.replace('body')
+    CKEDITOR.replace('description')
 </script>
 @endsection

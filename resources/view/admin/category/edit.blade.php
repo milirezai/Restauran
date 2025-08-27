@@ -29,22 +29,9 @@
                                         <input type="hidden" name="_method" value="put">
                                     </fieldset>
                                 </div>
-                                <div class="col-md-6">
-                                    <fieldset class="form-group">
-                                        <div class="form-group">
-                                            <label for="helperText">دسته والد</label>
-                                            <select name="parent_id" class="select2 form-control <?= errorClass('parent_id') ?>" >
-                                                <option value="">درصورت وجود والد انتخاب شود</option>
-                                                <?php foreach ($categories as $category) { ?>
-                                                    <option <?=  olrOrValue('parent_id',$findCategory->parent_id) == $category->id ? 'selected' : ''; ?> value="<?= $category->id ?>"><?= $category->name ?></option>
-                                                <?php  } ?>
-                                            </select>
-                                            <?= errorText('parent_id') ?>
-                                        </div>
-                                    </fieldset>
-                                </div>
 
-                                <div class="col-md-6">
+
+                                <div class="col-md-6 mt-2">
                                     <fieldset class="form-group">
                                         <button type="submit" class="btn btn-primary">ویرایش</button>
                                     </fieldset>

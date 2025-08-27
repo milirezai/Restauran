@@ -3,13 +3,13 @@ namespace App\Http\Request;
 
 use System\Request\Request;
 
-class UserRequest extends Request
+class NewsLetterRequest extends Request
 {
     public function rules()
     {
         return
             [
-                // rules
+                'email' => 'required|email'
             ];
     }
 }

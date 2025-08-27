@@ -3,7 +3,7 @@
 
 
 @section('head-tag')
-    <title>ادمین / نظرات</title>
+    <title>ادمین / خبرنامه</title>
 @endsection
 
 
@@ -20,24 +20,23 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">نظرات</h4>
-                            <span><a href="<?= route("admin.comment.index") ?>" class="btn btn-success">بازگشت</a></span>
+                            <h4 class="card-title">خبرنامه</h4>
+                            <span><a href="<?= route("admin.newsLetter.index") ?>" class="btn btn-success">بازگشت</a></span>
                         </div>
                         <div class="card-content">
                             <div class="card-body card-dashboard">
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h2><?= $comment->user()->first_name . ' ' . $comment->user()->last_name ?></h2>
-                                        <p><?= $comment->comment ?></p>
+                                        <h2><?= $newsLetter->email ?></h2>
                                     </div>
 
                                     <div class="col-md-12 mt-4 pt-4 border-top">
-                                        <form action="<?= route('admin.comment.answer', [$comment->id]) ?>" method="post">
+                                        <form action="<?= route('admin.newsLetter.answer', [$newsLetter->id]) ?>" method="post">
                                             <section class="form-group">
-                                                <label for="comment">پاسخ</label>
-                                                <textarea class="form-control <?= errorClass('comment') ?>" id="comment" rows="5" name="comment" placeholder="پاسخ ..."></textarea>
-                                                <?= errorText('comment') ?>
+                                                <label for="answer">پاسخ</label>
+                                                <textarea class="form-control <?= errorClass('answer') ?>" id="answer" rows="5" name="answer" placeholder="پاسخ ..."></textarea>
+                                                <?= errorText('answer') ?>
                                             </section>
                                             <div class="col-md-6">
                                                 <section class="form-group">

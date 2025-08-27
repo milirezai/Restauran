@@ -1,7 +1,8 @@
 <?php
-namespace App;
+namespace App\Model;
 
 use System\Database\ORM\Model;
+use System\Database\Traits\HasSoftDelete;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,7 @@ use System\Database\ORM\Model;
 
 class Contact extends Model
 {
-
+    use HasSoftDelete;
     /*
     |--------------------------------------------------------------------------
     | Property table
@@ -36,7 +37,7 @@ class Contact extends Model
     | that need filling
     |
     */
-    protected $fillable= ['full_name','email','message','status'];
+    protected $fillable= ['full_name','email','title','message','status'];
 
     /*
     |--------------------------------------------------------------------------

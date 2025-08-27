@@ -1,5 +1,5 @@
 <?php
-namespace App;
+namespace App\Model;
 
 use System\Database\ORM\Model;
 
@@ -88,5 +88,10 @@ class OurTeam extends Model
     protected $updatedAT= 'updated_at';
 
     protected $deletedAT= 'deleted_at';
+
+    public function status()
+    {
+        return $this->status == 0 ? '<span class="text-danger">غیرفعال</span>' : '<span class="text-success"> فعال</span>';
+    }
 
 }

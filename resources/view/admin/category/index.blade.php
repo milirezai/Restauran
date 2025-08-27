@@ -13,7 +13,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">دسته بندی</h4>
-                                    <span><a href="<?= route("admin.category.create") ?>" class="btn btn-success">ایجاد</a></span>
+                                    <span><a href="<?= route('admin.category.create') ?>" class="btn btn-success">ایجاد</a></span>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
@@ -24,7 +24,6 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>نام</th>
-                                                    <th>دسته والد</th>
                                                     <th style="min-width: 6rem; text-align: left;">تنظیمات</th>
                                                 </tr>
                                                 </thead>
@@ -33,11 +32,10 @@
                                                     <tr role="row" class="odd">
                                                         <td class="sorting_1"><?= $category->id ?></td>
                                                         <td><?= $category->name ?></td>
-                                                        <td><?= empty($category->parent_id) ? '' : $category->parent()->name ?></td>
                                                         <td style="min-width: 6rem; text-align: left;">
-                                                            <a href="<?= route("admin.category.edit", [$category->id]) ?>" class="btn btn-info waves-effect waves-light">ویرایش</a>
+                                                            <a href="<?= route('admin.category.edit',[$category->id]) ?>" class="btn btn-info waves-effect waves-light">ویرایش</a>
 
-                                                            <form class="d-inline" action="<?= route("admin.category.delete",[$category->id]) ?>" method="post">
+                                                            <form class="d-inline" action="<?= route('admin.category.delete',[$category->id]) ?>" method="post">
                                                                 <input type="hidden" name="_method" value="delete">
                                                                 <button type="submit" class="btn btn-danger waves-effect waves-light">حذف</button>
                                                             </form>

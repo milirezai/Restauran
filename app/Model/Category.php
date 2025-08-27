@@ -1,7 +1,8 @@
 <?php
-namespace App;
+namespace App\Model;
 
 use System\Database\ORM\Model;
+use System\Database\Traits\HasSoftDelete;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,7 @@ use System\Database\ORM\Model;
 
 class Category extends Model
 {
+    use HasSoftDelete;
 
     /*
     |--------------------------------------------------------------------------
@@ -89,4 +91,8 @@ class Category extends Model
 
     protected $deletedAT= 'deleted_at';
 
+    public function products()
+    {
+        return $this->hasMany('App\Model\Product','cat_id','id');
+    }
 }

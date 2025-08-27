@@ -14,7 +14,7 @@ use System\Database\Traits\HasSoftDelete;
 |
 */
 
-class Order extends Model
+class OrderNumber extends Model
 {
     use HasSoftDelete;
 
@@ -27,7 +27,7 @@ class Order extends Model
     | Stores the table name represented by this class.
     |
     */
-    protected $table = 'orders';
+    protected $table = 'order_numbers';
 
     /*
     |--------------------------------------------------------------------------
@@ -38,7 +38,7 @@ class Order extends Model
     | that need filling
     |
     */
-    protected $fillable= ['user_id','product_id','price','order_number_id','status','is_active'];
+    protected $fillable= ['price','status'];
 
     /*
     |--------------------------------------------------------------------------
@@ -91,16 +91,28 @@ class Order extends Model
 
     protected $deletedAT= 'deleted_at';
 
+    public function orders()
+    {
+        $this->hasMany('App\Model\Order','order_number_id','id');
+    }
     public function user()
     {
-        return $this->belongsTo('App\Model\User','user_id','id');
+       return $this->belongsTo('App\Model\User','user_id','id');
     }
-    public function product()
+    public function status()
     {
-        return $this->belongsTo('App\Model\Product','product_id','id');
-    }
-    public function products()
-    {
-        return $this->hasMany('App\Model\Product','product_id','id');
+        switch ($this->status)
+        {
+            case 0:
+                $status = 'ارسال نشده';
+                break;
+            case 1:
+                $status = 'درحال ارسال';
+                break;
+            case 100:
+                $status = 'ارسال شد';
+                break;
+        }
+        return $status;
     }
 }

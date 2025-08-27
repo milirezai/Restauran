@@ -12,19 +12,18 @@ return
     |
     */
     'SMTP' => [
-        'PHPMailer' => Env::get('PHPMailer'),
-        'Host'       => Env::get('Host'),
-        'SMTPAuth'   => Env::get('SMTPAuth'),
-        'Username'   => Env::get('Username'),
-        'Password'   => Env::get('Password'),
-        'Port'       => Env::get('Port'),
+        'PHPMailer' => Env::get('PHP_MAILER'),
+        'Host'       => Env::get('HOST'),
+        'SMTPAuth'   => Env::get('SMTPAUTH'),
+        'Username'   => Env::get('USERNAME'),
+        'Password'   => 'wkbk vlkz qowx rqpe',
+        'Port'       => Env::get('PORT'),
         'setFrom'    => [
-            'mail'  =>  Env::get('mail'),
-            'name'  =>  Env::get('name')
+            'mail'  =>  Env::get('MAIL'),
+            'name'  =>  Env::get('NAME')
         ],
-        'SMTPDebug' => Env::get('SMTPDebug'),
-        'CharSet' => Env::get('CharSet'),
+        'SMTPDebug' => Env::get('SMTPDEBUG'),
+        'CharSet' => Env::get('CHARSET'),
         'HTML' => Env::get('HTML')
     ]
-
 ];

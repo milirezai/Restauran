@@ -40,6 +40,54 @@ Route::get('/home','HomeController@index','index');
 // admin
 Route::get('/admin','admin\AdminController@index','admin.index');
 
+// admin-category
+Route::get('/admin/category','admin\CategoryController@index','admin.category.index');
+Route::get("/admin/category/create","admin\CategoryController@create","admin.category.create");
+Route::post("/admin/category/store","admin\CategoryController@store","admin.category.store");
+Route::get("/admin/category/edit/{id}","admin\CategoryController@edit","admin.category.edit");
+Route::put("/admin/category/update/{id}","admin\CategoryController@update","admin.category.update");
+Route::delete("/admin/category/delete/{id}","admin\CategoryController@destroy","admin.category.delete");
+
+// admin-product
+Route::get('/admin/product','admin\ProductController@index','admin.product.index');
+Route::get('/admin/product/status/{id}','admin\ProductController@status','admin.product.status');
+Route::get('/admin/product/delete/{id}','admin\ProductController@destroy','admin.product.delete');
+Route::get('/admin/product/create','admin\ProductController@create','admin.product.create');
+Route::post('/admin/product/create','admin\ProductController@store','admin.product.store');
+Route::get("/admin/product/edit/{id}","admin\ProductController@edit","admin.product.edit");
+Route::put("/admin/product/update/{id}","admin\ProductController@update","admin.product.update");
+
+// admin-newsLetter
+Route::get('/admin/news-letter','admin\NewsLetterController@index','admin.newsLetter.index');
+Route::get('/admin/news-letter/message/{id}','admin\NewsLetterController@message','admin.newsLetter.message');
+Route::post('/admin/news-letter/message/answer/{id}','admin\NewsLetterController@answer','admin.newsLetter.answer');
+
+// admin-our-team
+Route::get('/admin/our-team','admin\OurTeamController@index','admin.ourTeam.index');
+Route::get('/admin/our-team/status/{id}','admin\OurTeamController@status','admin.ourTeam.status');
+
+// admin-contact
+Route::get('/admin/contact','admin\ContactController@index','admin.contact.index');
+Route::get('/admin/contact/message/{id}','admin\ContactController@message','admin.contact.message');
+Route::post('/admin/contact/message/answer/{id}','admin\ContactController@answer','admin.contact.message.answer');
+
+// admin-users
+Route::get("/admin/users","admin\UserController@index","admin.users.index");
+Route::get("/admin/users/status/{id}","admin\UserController@status","admin.users.status");
+
+
+// admin-orders
+Route::get("/admin/orders","admin\OrderController@index","admin.orders.index");
+Route::get("/admin/orders/show/{id}","admin\OrderController@order","admin.orders.show");
+Route::get("/admin/orders/status/{id}/{status}","admin\OrderController@status","admin.orders.status");
+
+
+
+
+
+
+
+
 
 
 

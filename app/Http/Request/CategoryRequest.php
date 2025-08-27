@@ -3,13 +3,13 @@ namespace App\Http\Request;
 
 use System\Request\Request;
 
-class UserRequest extends Request
+class CategoryRequest extends Request
 {
     public function rules()
     {
         return
             [
-                // rules
+                'name' => 'required|max:210'
             ];
     }
 }

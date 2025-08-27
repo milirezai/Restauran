@@ -1,7 +1,8 @@
 <?php
-namespace App;
+namespace App\Model;
 
 use System\Database\ORM\Model;
+use System\Database\Traits\HasSoftDelete;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,7 @@ use System\Database\ORM\Model;
 
 class Product extends Model
 {
+    use HasSoftDelete;
 
     /*
     |--------------------------------------------------------------------------
@@ -36,7 +38,7 @@ class Product extends Model
     | that need filling
     |
     */
-    protected $fillable= ['name','price','description','image','categories','status'];
+    protected $fillable= ['name','price','description','image','cat_id','status'];
 
     /*
     |--------------------------------------------------------------------------
@@ -88,5 +90,14 @@ class Product extends Model
     protected $updatedAT= 'updated_at';
 
     protected $deletedAT= 'deleted_at';
+
+    public function category()
+    {
+        return $this->belongsTo('App\Model\Category','cat_id','id');
+    }
+    public function status()
+    {
+        return $this->status == 0 ? '<span class="text-danger">غیرفعال</span>' : '<span class="text-success"> فعال</span>';
+    }
 
 }

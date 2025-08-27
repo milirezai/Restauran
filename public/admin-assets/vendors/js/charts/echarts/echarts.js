@@ -1886,7 +1886,7 @@ function preparePointerTransformer(markers, saved) {
  * Get the `e.zrX` and `e.zrY`, which are relative to the top-left of
  * the input `el`.
  * Get `e.zrDelta` if using mouse wheel.
- * Get `e.which`, see the comment inside this function.
+ * Get `e.which`, see the newsLetter inside this function.
  *
  * Do not calculate repeatly if `zrX` and `zrY` already exist.
  *
@@ -16997,7 +16997,7 @@ function cacheElementStl(el) {
     var elStyle = el.style;
 
     for (var name in hoverStyle) {
-        // See comment in `singleEnterEmphasis`.
+        // See newsLetter in `singleEnterEmphasis`.
         if (hoverStyle[name] != null) {
             normalStyle[name] = elStyle[name];
         }
@@ -18688,7 +18688,7 @@ function enableTopologicalTravel(entity, dependencyGetter) {
 /*
 * A third-party license is embeded for some of the code in this file:
 * The method "quantile" was copied from "d3.js".
-* (See more details in the comment of the method below.)
+* (See more details in the newsLetter of the method below.)
 * The use of the source code of this file is also subject to the terms
 * and consitions of the license of "d3.js" (BSD-3Clause, see
 * </licenses/LICENSE-d3>).
@@ -29758,7 +29758,7 @@ function summarizeDimensions(data) {
     var defaultedLabel = [];
     var defaultedTooltip = [];
 
-    // See the comment of `List.js#userOutput`.
+    // See the newsLetter of `List.js#userOutput`.
     var userOutput = summary.userOutput = {
         dimensionNames: data.dimensions.slice(),
         encode: {}
@@ -31351,7 +31351,7 @@ listProto.selectRange = function (range) {
                 for (var i = 0; i < len; i++) {
                     var val = chunkStorage[i];
                     var val2 = chunkStorage2[i];
-                    // Do not filter NaN, see comment above.
+                    // Do not filter NaN, see newsLetter above.
                     if ((
                             (val >= min && val <= max) || isNaN(val)
                         )
@@ -31372,7 +31372,7 @@ listProto.selectRange = function (range) {
             for (var i = 0; i < originalCount; i++) {
                 var rawIndex = this.getRawIndex(i);
                 var val = this._getFast(dim0, rawIndex);
-                // Do not filter NaN, see comment above.
+                // Do not filter NaN, see newsLetter above.
                 if (
                     (val >= min && val <= max) || isNaN(val)
                 ) {
@@ -31387,7 +31387,7 @@ listProto.selectRange = function (range) {
                 for (var k = 0; k < dimSize; k++) {
                     var dimk = dimensions[k];
                     var val = this._getFast(dim, rawIndex);
-                    // Do not filter NaN, see comment above.
+                    // Do not filter NaN, see newsLetter above.
                     if (val < range[dimk][0] || val > range[dimk][1]) {
                         keep = false;
                     }
@@ -33724,7 +33724,7 @@ function getValueAxisStart(baseAxis, valueAxis, stacked) {
 * A third-party license is embeded for some of the code in this file:
 * The "scaleLevels" was originally copied from "d3.js" with some
 * modifications made for this project.
-* (See more details in the comment on the definition of "scaleLevels" below.)
+* (See more details in the newsLetter on the definition of "scaleLevels" below.)
 * The use of the source code of this file is also subject to the terms
 * and consitions of the license of "d3.js" (BSD-3Clause, see
 * </licenses/LICENSE-d3>).
@@ -49305,7 +49305,7 @@ SeriesModel.extend({
 * The tree layoutHelper implementation was originally copied from
 * "d3.js"(https://github.com/d3/d3-hierarchy) with
 * some modifications made for this project.
-* (see more details in the comment of the specific method below.)
+* (see more details in the newsLetter of the specific method below.)
 * The use of the source code of this file is also subject to the terms
 * and consitions of the licence of "d3.js" (BSD-3Clause, see
 * </licenses/LICENSE-d3>).
@@ -52976,7 +52976,7 @@ function mapVisual$1(nodeModel, visuals, child, index, mapping, seriesModel) {
 * A third-party license is embeded for some of the code in this file:
 * The treemap layout implementation was originally copied from
 * "d3.js" with some modifications made for this project.
-* (See more details in the comment of the method "squarify" below.)
+* (See more details in the newsLetter of the method "squarify" below.)
 * The use of the source code of this file is also subject to the terms
 * and consitions of the license of "d3.js" (BSD-3Clause, see
 * </licenses/LICENSE-d3>).
@@ -56293,7 +56293,7 @@ var circularLayout = function (ecModel) {
 * A third-party license is embeded for some of the code in this file:
 * Some formulas were originally copied from "d3.js" with some
 * modifications made for this project.
-* (See more details in the comment of the method "step" below.)
+* (See more details in the newsLetter of the method "step" below.)
 * The use of the source code of this file is also subject to the terms
 * and consitions of the license of "d3.js" (BSD-3Clause, see
 * </licenses/LICENSE-d3>).
@@ -77348,7 +77348,7 @@ proto$5.setInputRanges = function (areas, ecModel) {
             // where area.coordRange remains unchanged but area.range may be changed.
             // (2) Only support converting one coordRange to pixel range in brush
             // component. So do not consider `coordRanges`.
-            // (3) About __rangeOffset, see comment above.
+            // (3) About __rangeOffset, see newsLetter above.
             var result = coordConvert[area.brushType](0, targetInfo.coordSys, area.coordRange);
             var rangeOffset = area.__rangeOffset;
             area.range = rangeOffset

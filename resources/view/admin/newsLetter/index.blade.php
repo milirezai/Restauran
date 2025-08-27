@@ -3,7 +3,7 @@
 
 
 @section('head-tag')
-<title>ادمین / نظرات</title>
+<title>ادمین / خبرنامه</title>
 @endsection
 
 
@@ -30,29 +30,18 @@
                                         <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>کاربر</th>
-                                            <th>نظر</th>
-                                            <th>وضعیت</th>
+                                            <th>ایمیل</th>
                                             <th>تنظیمات</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php foreach ($comments as $comment) { ?>
+                                        <?php foreach ($newsLetters as $newsLetter) { ?>
                                         <tr>
-                                            <td><?= $comment->id ?></td>
-                                            <td><?= $comment->user()->first_name . ' ' . $comment->user()->last_name ?></td>
-                                            <td><?= substr($comment->comment,0,70).'...' ?></td>
-                                            <td><?= $comment->approved == 0 ? '<span class="text-danger">در انتظار تایید</span>' : '<span class="text-success">تایید شده</class>' ?></td>
+                                            <td><?= $newsLetter->id ?></td>
+                                            <td><?= $newsLetter->email ?></td>
                                             <td>
 
-                                                <a href="<?= route('admin.comment.show', [$comment->id]) ?>" class="btn btn-success">نمایش</a>
-
-                                                <?php if($comment->approved == 0) { ?>
-                                                    <a href="<?= route('admin.comment.approved', [$comment->id]) ?>" class="btn btn-warning">تائید</a>
-                                                <?php } else { ?>
-                                                    <a href="<?= route('admin.comment.approved', [$comment->id]) ?>" class="btn btn-danger">لغو تایید</a>
-                                                <?php } ?>
-
+                                                <a href="<?= route('admin.newsLetter.message', [$newsLetter->id]) ?>" class="btn btn-success">نمایش</a>
 
                                             </td>
                                         </tr>
