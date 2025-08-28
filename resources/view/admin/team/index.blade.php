@@ -16,6 +16,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">تیم ما</h4>
+                            <span><a href="<?= route('admin.ourTeam.create') ?>" class="btn btn-success">ایجاد</a></span>
                         </div>
                         <div class="card-content">
                             <div class="card-body card-dashboard">
@@ -47,6 +48,10 @@
                                                 <?php } else { ?>
                                                 <a href="<?= route('admin.ourTeam.status',[$user->id]) ?>" class="btn btn-danger">غیرفعال</a>
                                                 <?php } ?>
+
+
+                                                <a href="<?= route('admin.ourTeam.delete',[$user->id]) ?>" class="btn btn-danger">حذف</a>
+                                                <a href="<?= route('admin.ourTeam.edit',[$user->id]) ?>" class="btn btn-primary">ویرایش</a>
 
 
                                             </td>

@@ -2,7 +2,6 @@
 namespace App\Model;
 
 use System\Database\ORM\Model;
-use System\Database\Traits\HasSoftDelete;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +13,8 @@ use System\Database\Traits\HasSoftDelete;
 |
 */
 
-class OurTeam extends Model
+class Booking extends Model
 {
-    use HasSoftDelete;
 
     /*
     |--------------------------------------------------------------------------
@@ -27,7 +25,7 @@ class OurTeam extends Model
     | Stores the table name represented by this class.
     |
     */
-    protected $table = 'our_team';
+    protected $table = 'bookings';
 
     /*
     |--------------------------------------------------------------------------
@@ -38,7 +36,7 @@ class OurTeam extends Model
     | that need filling
     |
     */
-    protected $fillable= ['first_name','last_name','avatar','position','status','is_active'];
+    protected $fillable= ['name','email','date','people','description','status'];
 
     /*
     |--------------------------------------------------------------------------
@@ -89,11 +87,6 @@ class OurTeam extends Model
 
     protected $updatedAT= 'updated_at';
 
-    protected $deletedAT= 'deleted_at';
-
-    public function status()
-    {
-        return $this->status == 0 ? '<span class="text-danger">غیرفعال</span>' : '<span class="text-success"> فعال</span>';
-    }
+    protected $deletedAT= null;
 
 }

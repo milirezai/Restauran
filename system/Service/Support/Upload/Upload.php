@@ -11,7 +11,7 @@ class Upload
     protected static function managingImageUploads($file, $name, $path, $width = 800, $height = 532)
     {
         $managing = new ImageManager(self::$imageDriver);
-        $image = $managing->make($file['tmp_name'])->fit($width,$height);
+        $image = $managing->make($file['tmp_name']);
         $image->save($path.$name);
         return '/'.$path.$name;
     }

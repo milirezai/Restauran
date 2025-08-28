@@ -41,7 +41,7 @@
                                             <td><?= $product->id ?></td>
                                             <td><?= $product->name ?></td>
                                             <td><?= $product->price ?></td>
-                                            <td><?= substr(html_entity_decode($product->description),0,35).'...' ?></td>
+                                            <td><?= substr(html_entity_decode($product->description),0,20).'...' ?></td>
                                             <td><img style="width: 90px;" src="<?= asset($product->image) ?>"></td>
                                             <td><?= $product->category()->name ?></td>
                                             <td><?= $product->status() ?></td>

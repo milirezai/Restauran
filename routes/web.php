@@ -2,40 +2,45 @@
 use System\Router\Web\Route;
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | Route post
-    |--------------------------------------------------------------------------
-    |
-    |  
-    |  
-    |
-    |--------------------------------------------------------------------------
-    | Route get
-    |--------------------------------------------------------------------------
-    |
-    |
-    |
-    |
-    |--------------------------------------------------------------------------
-    | Route put
-    |--------------------------------------------------------------------------
-    |
-    |
-    |
-    |
-    |--------------------------------------------------------------------------|
-    | Route delete                               
-    |--------------------------------------------------------------------------|
-    |
-    |
-    |
-    |
-    */ 
 
 // home
 Route::get('/','HomeController@index','index');
 Route::get('/home','HomeController@index','index');
+
+// about
+Route::get('/about','HomeController@about','about');
+
+// services
+Route::get('/services','HomeController@services','services');
+
+// menu
+Route::get('/menu','HomeController@menu','menu');
+
+// booking
+Route::get('/booking','HomeController@booking','booking');
+
+// Contact
+Route::get('/contact','HomeController@contact','contact');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // admin
 Route::get('/admin','admin\AdminController@index','admin.index');
@@ -65,6 +70,11 @@ Route::post('/admin/news-letter/message/answer/{id}','admin\NewsLetterController
 // admin-our-team
 Route::get('/admin/our-team','admin\OurTeamController@index','admin.ourTeam.index');
 Route::get('/admin/our-team/status/{id}','admin\OurTeamController@status','admin.ourTeam.status');
+Route::get('/admin/our-team/create','admin\OurTeamController@create','admin.ourTeam.create');
+Route::post('/admin/our-team/store','admin\OurTeamController@store','admin.ourTeam.store');
+Route::get('/admin/our-team/delete/{id}','admin\OurTeamController@destroy','admin.ourTeam.delete');
+Route::get('/admin/our-team/edit/{id}','admin\OurTeamController@edit','admin.ourTeam.edit');
+Route::put('/admin/our-team/update/{id}','admin\OurTeamController@update','admin.ourTeam.update');
 
 // admin-contact
 Route::get('/admin/contact','admin\ContactController@index','admin.contact.index');
