@@ -24,4 +24,9 @@ class ContactController extends Controller
         sendMail($contact->email,"تماس با ما",answerForMessageContact($answer));
         return redirect(route('admin.contact.index'));
     }
+    public function destroy($id)
+    {
+        Contact::delete($id);
+        return back();
+    }
 }

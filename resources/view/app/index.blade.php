@@ -102,7 +102,9 @@
                                         </h5>
                                         <h6 class="d-flex justify-content-between">
                                             <small class="fst-italic"><?= $product->name ?></small>
-                                            <button type="button" class="btn btn-primary">add cart</button>
+                                            <form action="<?= route('cart',[$product->id]) ?>" method="post" id="addUser" >
+                                                <button type="submit" class="btn btn-primary">cart</button>
+                                            </form>
                                         </h6>
                                     </div>
                                 </div>
@@ -117,21 +119,19 @@
 
                 </div>
 
-
-
-
-
-
-
-
-
-
-
-
                 </div>
         </div>
     <!-- Menu End -->
 
 
 
+
+
+
+
+@endsection
+
+@section('script')
+    <script src="<?= asset('assets/js/cart/jquery.js') ?>"></script>
+    <script src="<?= asset('assets/js/cart/ajax.js') ?>"></script>
 @endsection

@@ -24,7 +24,6 @@
             <li class=" nav-item"><a href="<?= route('admin.newsLetter.index') ?>"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">نظرات</span></a></li>
             <li class=" nav-item"><a href="<?= route('admin.users.index') ?>"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">کاربران</span></a></li>
             <li class=" nav-item"><a href="<?= route('index') ?>"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">بازگشت به سایت</span></a></li>
-
         </ul>
     </div>
 </div>

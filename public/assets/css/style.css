@@ -522,3 +522,8 @@
 .description-cart{
     border-top: 1px solid black;
 }
+.btn-cart{
+    height: 35px;
+    width: 80px;
+    margin-left: 15px;
+}

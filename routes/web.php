@@ -1,6 +1,7 @@
 <?php
 use System\Router\Web\Route;
 
+Route::post('/cart/{id}','HomeController@cart','cart');
 
 
 // home
@@ -15,17 +16,42 @@ Route::get('/services','HomeController@services','services');
 
 // menu
 Route::get('/menu','HomeController@menu','menu');
+Route::post('/menu/search','HomeController@search','menu.search');
 
 // booking
 Route::get('/booking','HomeController@booking','booking');
+Route::post('/booking','HomeController@bookingStore','booking.store');
 
 // Contact
 Route::get('/contact','HomeController@contact','contact');
+Route::post('/contact','HomeController@storeContact','contact.store');
+
+// footer-news-letter
+Route::post('/news-letter','HomeController@newsLetter','newsLetter');
+
+
+
+// user-panel
+Route::get('/my-panel','UserController@index','my.panel.index');
 
 
 
 
 
+
+
+
+// auth
+Route::get("/register","auth\RegisterController@show","auth.register.show");
+Route::post("/register","auth\RegisterController@register","auth.register");
+Route::get("/activation/{token}","auth\RegisterController@activation","auth.activation");
+Route::get("/login","auth\LoginController@show","auth.login.show");
+Route::post("/login","auth\LoginController@login","auth.login");
+Route::get("/forgot","auth\ForgotController@show","auth.forgot.show");
+Route::post("/forgot","auth\ForgotController@forgot","auth.forgot");
+Route::get("/reset-password/{token}","auth\ResetPasswordController@show","auth.reset-password.show");
+Route::post("/reset-password/{token}","auth\ResetPasswordController@resetPassword","auth.reset-password");
+Route::get("/logout","auth\LogoutController@logout","auth.logout");
 
 
 
@@ -80,6 +106,7 @@ Route::put('/admin/our-team/update/{id}','admin\OurTeamController@update','admin
 Route::get('/admin/contact','admin\ContactController@index','admin.contact.index');
 Route::get('/admin/contact/message/{id}','admin\ContactController@message','admin.contact.message');
 Route::post('/admin/contact/message/answer/{id}','admin\ContactController@answer','admin.contact.message.answer');
+Route::get('/admin/contact/message/delete/{id}','admin\ContactController@destroy','admin.contact.delete');
 
 // admin-users
 Route::get("/admin/users","admin\UserController@index","admin.users.index");
@@ -90,6 +117,12 @@ Route::get("/admin/users/status/{id}","admin\UserController@status","admin.users
 Route::get("/admin/orders","admin\OrderController@index","admin.orders.index");
 Route::get("/admin/orders/show/{id}","admin\OrderController@order","admin.orders.show");
 Route::get("/admin/orders/status/{id}/{status}","admin\OrderController@status","admin.orders.status");
+
+// admin-bookings
+Route::get("/admin/bookings","admin\BookingController@index","admin.bookings.index");
+Route::get("/admin/bookings/confirmed/{id}","admin\BookingController@confirmed","admin.bookings.confirmed");
+Route::get("/admin/bookings/cancel/{id}","admin\BookingController@cancel","admin.bookings.cancel");
+
 
 
 

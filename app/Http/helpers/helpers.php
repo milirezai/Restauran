@@ -47,5 +47,32 @@ function answerForMessageContact($answer)
        <p style="text-align: center">"'. $answer .'"</p>
        ';
     return $msg;
+}
 
+function cart($name,$val)
+{
+    System\Session\Session::set($name,$val);
+    return \System\Session\Session::get($name);
+}
+
+function confirmedMessageBooking()
+{
+    $msg =
+        '
+        <h2>Restauran</h2>
+        <p>مشتری گرامی رزور شما به موفقیت تایید شد</p>
+        <p>ممنون از انتخاب شما</p>
+        ';
+    return $msg;
+}
+
+function cancelMessageBooking()
+{
+    $msg =
+        '
+        <h2>Restauran</h2>
+        <p>  مشتری گرامی رزور شما تایید نشد برای اطلاعات بیشتر با پشتیبانی تماس بگیرید</p>
+        <p>ممنون از انتخاب شما</p>
+        ';
+    return $msg;
 }

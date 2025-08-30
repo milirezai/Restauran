@@ -21,6 +21,7 @@
             <li class=" nav-item "><a href="<?=  route('admin.category.index')  ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">دسته بندی</span></a></li>
             <li class=" nav-item "><a href="<?=  route('admin.product.index')  ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">محصولات</span></a></li>
             <li class=" nav-item "><a href="<?=  route('admin.orders.index')  ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">سفارشات</span></a></li>
+            <li class=" nav-item"><a href="<?=  route('admin.bookings.index')  ?>"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">رزروها</span></a></li>
             <li class=" nav-item "><a href="<?=  route('admin.newsLetter.index')  ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">خبرنامه</span></a></li>
             <li class=" nav-item "><a href="<?=  route('admin.ourTeam.index')  ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">تیم ما</span></a></li>
             <li class=" nav-item "><a href="<?=  route('admin.contact.index')  ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">تماس با ما</span></a></li>

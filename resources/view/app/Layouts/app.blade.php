@@ -33,12 +33,14 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
+                        <a href="<?= route('my.panel.index') ?>" class="nav-item nav-link <?= currentUrl() == route('index') ? 'active' : '' ?>">panel</a>
                         <a href="<?= route('index') ?>" class="nav-item nav-link <?= currentUrl() == route('index') ? 'active' : '' ?>">Home</a>
                         <a href="<?= route('about') ?>" class="nav-item nav-link <?= currentUrl() == route('about') ? 'active' : '' ?>">About</a>
                         <a href="<?= route('services') ?>" class="nav-item nav-link <?= currentUrl() == route('services') ? 'active' : '' ?>">Service</a>
                         <a href="<?= route('menu') ?>" class="nav-item nav-link <?= currentUrl() == route('menu') ? 'active' : '' ?>">Menu</a>
                         <a href="<?= route('contact') ?>" class="nav-item nav-link <?= currentUrl() == route('contact') ? 'active' : '' ?>">Contact</a>
                         <a href="<?= route('booking') ?>" class="nav-item nav-link <?= currentUrl() == route('booking') ? 'active' : '' ?>">Book A Table</a>
+                        <button type="button" class="btn-cart btn btn-primary mt-4 ">cart</button>
                     </div>
                 </div>
             </nav>
@@ -54,22 +56,20 @@
                     <div class="row g-5">
                         <div class="col-lg-3 col-md-6">
                             <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Company</h4>
-                            <a class="btn btn-link" href="">About Us</a>
-                            <a class="btn btn-link" href="">Contact Us</a>
-                            <a class="btn btn-link" href="">Reservation</a>
-                            <a class="btn btn-link" href="">Privacy Policy</a>
-                            <a class="btn btn-link" href="">Terms & Condition</a>
+                            <a class="btn btn-link" href="<?= route('index') ?>">Home</a>
+                            <a class="btn btn-link" href="<?= route('about') ?>">About Us</a>
+                            <a class="btn btn-link" href="<?= route('services') ?>">Reservation</a>
+                            <a class="btn btn-link" href="<?= route('menu') ?>">Menu</a>
+                            <a class="btn btn-link" href="<?= route('contact') ?>">Contact Us</a>
+                            <a class="btn btn-link" href="<?= route('booking') ?>">booking</a>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
-                            <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                            <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                            <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                            <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>iran tehran</p>
+                            <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>0916 751 6826</p>
+                            <p class="mb-2"><i class="fa "></i>monarchframework@gmail.com</p>
                             <div class="d-flex pt-2">
-                                <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                                <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-outline-light btn-social" href="https://github.com/milirezai/Restauran"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
@@ -83,29 +83,10 @@
                             <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>
                             <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
                             <div class="position-relative mx-auto" style="max-width: 400px;">
-                                <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                                <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="copyright">
-                        <div class="row">
-                            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                                &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
-
-                                <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                                Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a><br><br>
-                                Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                            </div>
-                            <div class="col-md-6 text-center text-md-end">
-                                <div class="footer-menu">
-                                    <a href="">Home</a>
-                                    <a href="">Cookies</a>
-                                    <a href="">Help</a>
-                                    <a href="">FQAs</a>
-                                </div>
+                                <form method="post" action="<?= route('newsLetter') ?>">
+                                    <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" name="email" placeholder="Your email">
+                                    <button type="submit" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                                </form>
                             </div>
                         </div>
                     </div>

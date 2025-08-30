@@ -87,6 +87,10 @@ class Booking extends Model
 
     protected $updatedAT= 'updated_at';
 
-    protected $deletedAT= null;
+    protected $deletedAT= 'deleted_at';
+    public function status()
+    {
+        return $this->status == 0 ? 'غیرفعال' : 'فعال';
+    }
 
 }

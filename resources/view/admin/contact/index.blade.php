@@ -44,6 +44,7 @@
                                             <td>
 
                                                 <a href="<?= route('admin.contact.message', [$contact->id]) ?>" class="btn btn-success">نمایش</a>
+                                                <a href="<?= route('admin.contact.delete', [$contact->id]) ?>" class="btn btn-danger">حذف</a>
 
                                             </td>
                                         </tr>
