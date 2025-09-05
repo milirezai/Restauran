@@ -1,0 +1,21 @@
+<?php
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
+use App\Model\Payment;
+
+class PaymentController extends Controller
+{
+    public function index()
+    {
+        $payments = Payment::orderBy('created_at','DESC')->get();
+        return view('admin.payment.index',compact('payments'));
+    }
+    public function confirmed($id)
+    {
+        $payment = Payment::find($id);
+        $confirmed = $payment->pay_confirmed == 1 ? 0 : 1;
+        $payment->pay_confirmed = $confirmed;
+        $payment->save();
+        return back();
+    }
+}
