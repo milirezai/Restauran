@@ -2,8 +2,9 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Model\Contact;
+use App\Http\Controllers\Admin\AdminController;
 
-class ContactController extends Controller
+class ContactController extends AdminController
 {
     public function index()
     {

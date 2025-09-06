@@ -1,10 +1,11 @@
 <?php
 namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Controller;
 use App\Http\Request\OurTeamRequest;
 use App\Model\OurTeam;
 
-class OurTeamController extends Controller
+class OurTeamController extends AdminController
 {
     public function index()
     {

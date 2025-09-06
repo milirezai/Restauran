@@ -1,9 +1,8 @@
 <?php
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
 use App\Model\Booking;
-
-class BookingController extends Controller
+use App\Http\Controllers\Admin\AdminController;
+class BookingController extends AdminController
 {
     public function index()
     {

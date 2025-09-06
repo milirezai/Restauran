@@ -14,9 +14,11 @@ class Composer
 
     }
 
-    private function registerView($name, $callback)
+    private function registerView($names, $callback)
     {
-        $this->registerViewArray[$name] = $callback;
+        foreach ($names as $name){
+            $this->registerViewArray[$name] = $callback;
+        }
     }
 
     private function setViewArray($viewArray)

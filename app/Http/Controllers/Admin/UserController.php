@@ -2,8 +2,8 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Model\User;
-
-class UserController extends Controller
+use App\Http\Controllers\Admin\AdminController;
+class UserController extends AdminController
 {
     public function index()
     {

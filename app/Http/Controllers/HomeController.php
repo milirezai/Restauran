@@ -11,6 +11,7 @@ use App\Model\Category;
 use App\Model\Contact;
 use App\Model\NewsLetter;
 use App\Model\Order;
+use App\Model\OrderItem;
 use App\Model\OurTeam;
 use App\Model\Product;
 use System\Auth\Auth;
@@ -21,56 +22,29 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::where('status',1)->orderBy('created_at','DESC')->limit(0,8)->get();
-        $carts = allItemCart();
-        $allNumberItems = allNumberItems() > 0 ? allNumberItems() : '' ;
-        $totalPrice = totalPrice();
-        return view('app.index',compact('products','carts','allNumberItems','totalPrice'));
+        return view('app.index',compact('products'));
     }
     public function about()
     {
         $users = OurTeam::where('status',1)->get();
         $chef = OurTeam::where('status',1)->where('position','chef')->get();
-        $chefs = count($chef);
-        $carts = allItemCart();
-        $allNumberItems = allNumberItems() > 0 ? allNumberItems() : '' ;
-        $totalPrice = totalPrice();
         return view('app.about',compact('users','chefs','carts','allNumberItems','totalPrice'));
     }
 
     public function services()
     {
-        $carts = allItemCart();
-        $allNumberItems = allNumberItems() > 0 ? allNumberItems() : '' ;
-        $totalPrice = totalPrice();
-        return view('app.service',compact('carts','allNumberItems','totalPrice'));
+        return view('app.service');
     }
 
     public function menu()
     {
         $products = Product::where('status',1)->orderBy('created_at','DESC')->get();
-        $carts = allItemCart();
-        $allNumberItems = allNumberItems() > 0 ? allNumberItems() : '' ;
-        $totalPrice = totalPrice();
-        return view('app.menu',compact('products','carts','allNumberItems','totalPrice'));
-    }
-    public function search()
-    {
-        $request = new SearchRequest();
-        $key = $request->all()['search'];
-        $key = '%'.$key.'%';
-        $products = Product::where('name','LIKE',$key)->get();
-        $carts = allItemCart();
-        $allNumberItems = allNumberItems() > 0 ? allNumberItems() : '' ;
-        $totalPrice = totalPrice();
-        return view('app.menu',compact('products','carts','allNumberItems','totalPrice'));
+        return view('app.menu',compact('products'));
     }
 
     public function booking()
     {
-        $carts = allItemCart();
-        $allNumberItems = allNumberItems() > 0 ? allNumberItems() : '' ;
-        $totalPrice = totalPrice();
-        return view('app.booking',compact('carts','allNumberItems','totalPrice'));
+        return view('app.booking');
     }
     public function bookingStore()
     {
@@ -82,10 +56,7 @@ class HomeController extends Controller
 
     public function contact()
     {
-        $carts = allItemCart();
-        $allNumberItems = allNumberItems() > 0 ? allNumberItems() : '' ;
-        $totalPrice = totalPrice();
-        return view('app.contact',compact('carts','allNumberItems','totalPrice'));
+        return view('app.contact');
     }
     public function storeContact()
     {
@@ -94,9 +65,6 @@ class HomeController extends Controller
         Contact::create($inputs);
         return redirect(route('index'));
     }
-
-
-
 
     public function newsLetter()
     {

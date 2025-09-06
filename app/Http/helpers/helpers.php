@@ -11,7 +11,9 @@
     | Contact them at your preferred location.
     |
     */
-
+use App\Model\CartItem;
+use App\Model\OrderItem;
+use System\Auth\Auth;
 
 function errorClass($name)
 {
@@ -74,6 +76,31 @@ function cancelMessageBooking()
     return $msg;
 }
 
+function activationEmailMessage($token)
+{
+    $msg =
+        '
+        <h2>divar</h2>
+       <p>کاربر گرامی ثبت  نام شما با موفقیت انجام  شد برای فعال سازی حساب کاربری خود روی لینک زیر کلیک کنید</p>
+       <p style="text-align: center">
+       <a href="'.route('auth.activation', [$token]).'">فعال سازی حساب کاربری</a>
+       </p>
+       ';
+    return $msg;
+}
+
+function passwordRecoveryMsg($token)
+{
+    $msg =
+        '
+        <h2>divar</h2>
+       <p>کاربر گرامی  برای تغییر رمز عبور حساب کاربری خود روی لینک زیر کلیک کنید</p>
+       <p style="text-align: center">
+       <a href="'.route('auth.reset-password.show', [$token]).'">بازیابی رمز عبور</a>
+       </p>
+       ';
+    return $msg;
+}
 
 
 
@@ -86,20 +113,23 @@ function addItemCart($id)
 {
     if (!itemExists($id))
         return back();
-    $inputs = ['user_id' => 1, 'product_id' => $id];
-    \App\Model\Order::create($inputs);
+    $inputs = ['user_id' => Auth::user()->id, 'product_id' => $id];
+    \App\Model\CartItem::create($inputs);
     return back();
 }
 
 function allItemCart()
 {
-    $carts = \App\Model\Order::where('user_id',1)->where('number','>',0)->get();
+    if (isset(Auth::user()->id))
+        $carts = \App\Model\CartItem::where('user_id',Auth::user()->id)->where('number','>',0)->get();
+    else
+        $carts = [];
     return $carts;
 }
 
 function itemExists($id)
 {
-    $item = \App\Model\Order::where('user_id',1)->where('product_id',$id)->get();
+    $item = \App\Model\CartItem::where('user_id',Auth::user()->id)->where('product_id',$id)->get();
     if ($item != null)
     {
         $item = $item[0];
@@ -112,12 +142,12 @@ function itemExists($id)
 
 function removeItem($id)
 {
-    \App\Model\Order::delete($id);
+    \App\Model\CartItem::delete($id);
     return back();
 }
 function removeItemNumber($id)
 {
-    $item = \App\Model\Order::where('user_id',1)->where('product_id',$id)->get();
+    $item = \App\Model\CartItem::where('user_id',Auth::user()->id)->where('product_id',$id)->get();
     if ($item != null)
     {
         $item = $item[0];
@@ -133,17 +163,35 @@ function addOrderNumberId($id)
 
 function totalPrice()
 {
-    $totalPrice = [];
-    for ($i = 0; $i < count(allItemCart()); $i++){
-        array_push($totalPrice,allItemCart()[$i]->price());
+    if (isset(Auth::user()->id))
+    {
+        $totalPrice = [];
+        for ($i = 0; $i < count(allItemCart()); $i++){
+            array_push($totalPrice,allItemCart()[$i]->price());
+        }
+        return array_sum($totalPrice);
     }
-    return array_sum($totalPrice);
 }
 function allNumberItems()
 {
-    $allNumberItems = [];
-    for ($i = 0; $i < count(allItemCart()); $i++){
-        array_push($allNumberItems,allItemCart()[$i]->number);
+    if (isset(Auth::user()->id))
+    {
+        $allNumberItems = [];
+        for ($i = 0; $i < count(allItemCart()); $i++){
+            array_push($allNumberItems,allItemCart()[$i]->number);
+        }
+        return array_sum($allNumberItems);
     }
-    return array_sum($allNumberItems);
+}
+
+function add()
+{
+    foreach (allItemCart() as $item){
+        OrderItem::create([
+            'user_id' => $item->user_id,
+            'product_id' => $item->product_id,
+            'number' => $item->number,
+            'order_id' => 96
+        ]);
+    }
 }

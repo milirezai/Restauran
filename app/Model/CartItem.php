@@ -89,4 +89,14 @@ class CartItem extends Model
 
     protected $deletedAT= 'deleted_at';
 
+    public function product()
+    {
+        return $this->belongsTo('App\Model\Product','product_id','id');
+    }
+
+    public function price()
+    {
+        return $this->product()->price * $this->number;
+    }
+
 }

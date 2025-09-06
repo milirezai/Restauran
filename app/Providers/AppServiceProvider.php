@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use System\View\Composer;
+
 class AppServiceProvider extends Provider
 {
 
@@ -18,7 +20,17 @@ class AppServiceProvider extends Provider
     */
     public function boot()
     {
-
+        Composer::view(['app.index', 'app.about', 'app.service', 'app.menu', 'app.booking', 'app.contact', 'app.cart'],function (){
+            $carts = allItemCart();
+            $allNumberItems = allNumberItems() > 0 ? allNumberItems() : '' ;
+            $totalPrice = totalPrice();
+            return
+                [
+                    'carts' => $carts,
+                    'allNumberItems' => $allNumberItems,
+                    'totalPrice' => $totalPrice
+                ];
+        });
     }
     
 }

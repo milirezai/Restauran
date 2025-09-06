@@ -2,7 +2,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Model\NewsLetter;
-
+use App\Http\Controllers\Admin\AdminController;
 class NewsLetterController extends Controller
 {
     public function index()

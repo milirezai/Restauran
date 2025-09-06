@@ -2,7 +2,7 @@
 
 namespace System\Auth;
 
-use App\User;
+use App\model\User;
 use System\Session\Session;
 
 class Auth
@@ -14,13 +14,13 @@ class Auth
 
         if (!Session::get("user"))
         {
-            return redirect($this->redirectTo);
+            return false;
         }
         $user= User::find(Session::get("user"));
         if (empty($user))
         {
             Session::remove("user");
-            return redirect($this->redirectTo);
+            return false;
         }
         else
         {

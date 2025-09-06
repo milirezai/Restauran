@@ -2,11 +2,24 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Model\Order;
-use System\Service\Support\Cart\Cart;
+use System\Auth\Auth;
 
 class CartController extends Controller
 {
-    use Cart;
+    public function __construct()
+    {
+        if (Auth::check())
+        {
+            if (Auth::user()->user_type != 'user')
+            {
+                return redirect('/login');
+            }
+        }
+        else
+        {
+            return redirect('/login');
+        }
+    }
     public function addCart($id)
     {
         addItemCart($id);
@@ -20,5 +33,9 @@ class CartController extends Controller
     {
         removeItemNumber($id);
         return back();
+    }
+    public function cart()
+    {
+        return view('app.cart');
     }
 }

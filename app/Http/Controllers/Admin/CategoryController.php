@@ -1,10 +1,10 @@
 <?php
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Request\CategoryRequest;
 use App\Model\Category;
 
-class CategoryController extends Controller
+class CategoryController extends AdminController
 {
     public function index()
     {

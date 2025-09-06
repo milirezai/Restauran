@@ -2,8 +2,8 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Model\Payment;
-
-class PaymentController extends Controller
+use App\Http\Controllers\Admin\AdminController;
+class PaymentController extends AdminController
 {
     public function index()
     {

@@ -4,8 +4,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Request\ProductRequest;
 use App\Model\Category;
 use App\Model\Product;
-
-class ProductController extends Controller
+use App\Http\Controllers\Admin\AdminController;
+class ProductController extends AdminController
 {
     public function index()
     {

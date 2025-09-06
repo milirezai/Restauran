@@ -21,6 +21,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
+                        <a href="<?= route('auth.login.show') ?>" class="nav-item nav-link <?= currentUrl() == route('my.panel.index') ? 'active' : '' ?>">login</a>
                         <a href="<?= route('my.panel.index') ?>" class="nav-item nav-link <?= currentUrl() == route('my.panel.index') ? 'active' : '' ?>">panel</a>
                         <a href="<?= route('index') ?>" class="nav-item nav-link <?= currentUrl() == route('index') ? 'active' : '' ?>">Home</a>
                         <a href="<?= route('about') ?>" class="nav-item nav-link <?= currentUrl() == route('about') ? 'active' : '' ?>">About</a>
@@ -63,8 +64,8 @@
                             </div>
 
                             <div class="price">
-                                <button class="btn btn-primary btn-cart"> تومان <?= $totalPrice ?></button>
-                                <a class="btn btn-success btn-cart">pyment</a>
+                                <button class="btn btn-primary btn-cart"> $ <?= $totalPrice ?></button>
+                                <a href="<?= route('cart.showCart') ?>" class="btn btn-success btn-cart">show cart</a>
                             </div>
 
                         </section>

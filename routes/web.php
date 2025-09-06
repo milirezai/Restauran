@@ -15,7 +15,6 @@ Route::get('/services','HomeController@services','services');
 
 // menu
 Route::get('/menu','HomeController@menu','menu');
-Route::post('/menu/search','HomeController@search','menu.search');
 
 // booking
 Route::get('/booking','HomeController@booking','booking');
@@ -38,8 +37,10 @@ Route::get('/my-panel','UserController@index','my.panel.index');
 Route::get('/cart/{id}','CartController@addCart','cart.add');
 Route::get('/cart/remove/{id}','CartController@removeItem','cart.removeItem');
 Route::get('/cart/remove-number/{id}','CartController@removeItemNumber','cart.removeItemNumber');
+Route::get('/cart','CartController@cart','cart.showCart');
 
-
+// cart-payment
+Route::get('/payment','CartController@cart','cart.showCart');
 
 
 

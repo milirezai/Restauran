@@ -4,8 +4,8 @@ use App\Http\Controllers\Controller;
 use App\Model\OrderItem;
 use App\Model\Order;
 use App\Model\Payment;
-
-class OrderController extends Controller
+use App\Http\Controllers\Admin\AdminController;
+class OrderController extends AdminController
 {
     public function index()
     {
