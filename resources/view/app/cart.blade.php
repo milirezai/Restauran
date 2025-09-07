@@ -27,11 +27,11 @@
                     <h5 class="section-title ff-secondary text-center text-primary fw-normal">Cart</h5>
                     <div class="cart-payment">
                         <div class="count-order-item">
-                            <h5>Products price (<?= $allNumberItems ?>)</h5>
+                            <h6>Products price (<?= $allNumberItems ?>)</h6>
+                            <h5> $ <?= $totalPrice ?> </h5>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <button class="btn btn-primary btn-cart btn-order-registration"> $ <?= $totalPrice ?></button>
-                            <a href="" class="btn btn-success btn-order-registration">Finalize order</a>
+                            <a href="<?= route('payment') ?>" class="btn btn-success btn-order-registration">Finalize order</a>
                         </div>
                     </div>
                 </div>

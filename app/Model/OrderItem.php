@@ -36,7 +36,7 @@ class OrderItem extends Model
     | that need filling
     |
     */
-    protected $fillable= ['user_id', 'order_id', 'product_id', 'number'];
+    protected $fillable= ['user_id', 'order_id', 'product_id', 'number','expiration_date'];
 
     /*
     |--------------------------------------------------------------------------

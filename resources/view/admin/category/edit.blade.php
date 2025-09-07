@@ -26,10 +26,9 @@
                                         <label for="helperText">نام دسته</label>
                                         <input value="<?= olrOrValue('name',$findCategory->name) ?>" name="name" type="text" id="helperText" class="form-control <?= errorClass('name') ?>" placeholder="نام ..." >
                                         <?= errorText('name') ?>
-                                        <input type="hidden" name="_method" value="put">
                                     </fieldset>
                                 </div>
-
+                                <?= byMethod('put') ?>
 
                                 <div class="col-md-6 mt-2">
                                     <fieldset class="form-group">

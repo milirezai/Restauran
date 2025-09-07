@@ -11,6 +11,7 @@
     | Contact them at your preferred location.
     |
     */
+use App\Model\Order;
 use App\Model\CartItem;
 use App\Model\OrderItem;
 use System\Auth\Auth;
@@ -184,14 +185,56 @@ function allNumberItems()
     }
 }
 
-function add()
+function addOrderItemsAndOrder()
 {
+    $order_id = addOrder();
     foreach (allItemCart() as $item){
         OrderItem::create([
             'user_id' => $item->user_id,
             'product_id' => $item->product_id,
             'number' => $item->number,
-            'order_id' => 96
+            'order_id' => $order_id,
+            'expiration_date' => time()+1800
         ]);
+    }
+    removeCartItem();
+}
+function addOrder()
+{
+    if (count(allItemCart()) > 0)
+    {
+        Order::create([
+            'user_id' => Auth::user()->id,
+            'order_final_amount' => totalPrice(),
+            'expiration_date' => time()+1800
+        ]);
+        $order_id = Order::where('user_id',Auth::user()->id)->where('payment_status',0)->where('status',0)->where('expiration_date','>',time())->get();
+        return $order_id[0]->id;
+    }
+}
+function removeCartItem()
+{
+    foreach (allItemCart() as $item){
+        CartItem::delete($item->id);
+    }
+}
+
+function expirationDate()
+{
+    $orders = Order::where('expiration_date','<',time())->where('user_id',Auth::user()->id)->where('status',0)->where('payment_status',0)->get();
+    if (count($orders) > 0)
+    {
+        foreach ($orders as $ordersItem)
+        {
+            $items = $ordersItem->orderItems()->get();
+            foreach ($items as $item)
+            {
+                OrderItem::delete($item->id);
+            }
+        }
+    }
+    foreach ($orders as $order)
+    {
+        Order::delete($order->id);
     }
 }

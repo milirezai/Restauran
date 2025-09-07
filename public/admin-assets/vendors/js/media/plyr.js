@@ -6471,7 +6471,7 @@ typeof navigator === "object" && (function (global, factory) {
         }
       }
       /**
-       * Get the ads instance ready
+       * Get the info instance ready
        */
 
     }, {
@@ -6501,9 +6501,9 @@ typeof navigator === "object" && (function (global, factory) {
       key: "setupIMA",
 
       /**
-       * In order for the SDK to display ads for our video, we need to tell it where to put them,
+       * In order for the SDK to display info for our video, we need to tell it where to put them,
        * so here we define our ad container. This div is set up to render on top of the video player.
-       * Using the code below, we tell the SDK to render ads within that div. We also provide a
+       * Using the code below, we tell the SDK to render info within that div. We also provide a
        * handle to the content video player - the SDK will poll the current time of our player to
        * properly place mid-rolls. After we create the ad display container, we initialize it. On
        * mobile devices, this initialization is done as the result of a user action.
@@ -6519,9 +6519,9 @@ typeof navigator === "object" && (function (global, factory) {
 
         google.ima.settings.setLocale(this.player.config.ads.language); // Set playback for iOS10+
 
-        google.ima.settings.setDisableCustomPlaybackForIOS10Plus(this.player.config.playsinline); // We assume the adContainer is the video container of the plyr element that will house the ads
+        google.ima.settings.setDisableCustomPlaybackForIOS10Plus(this.player.config.playsinline); // We assume the adContainer is the video container of the plyr element that will house the info
 
-        this.elements.displayContainer = new google.ima.AdDisplayContainer(this.elements.container, this.player.media); // Request video ads to be pre-loaded
+        this.elements.displayContainer = new google.ima.AdDisplayContainer(this.elements.container, this.player.media); // Request video info to be pre-loaded
 
         this.requestAds();
       }
@@ -6537,15 +6537,15 @@ typeof navigator === "object" && (function (global, factory) {
         var container = this.player.elements.container;
 
         try {
-          // Create ads loader
-          this.loader = new google.ima.AdsLoader(this.elements.displayContainer); // Listen and respond to ads loaded and error events
+          // Create info loader
+          this.loader = new google.ima.AdsLoader(this.elements.displayContainer); // Listen and respond to info loaded and error events
 
           this.loader.addEventListener(google.ima.AdsManagerLoadedEvent.Type.ADS_MANAGER_LOADED, function (event) {
             return _this4.onAdsManagerLoaded(event);
           }, false);
           this.loader.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, function (error) {
             return _this4.onAdError(error);
-          }, false); // Request video ads
+          }, false); // Request video info
 
           var request = new google.ima.AdsRequest();
           request.adTagUrl = this.tagUrl; // Specify the linear and nonlinear slot sizes. This helps the SDK
@@ -6554,7 +6554,7 @@ typeof navigator === "object" && (function (global, factory) {
           request.linearAdSlotWidth = container.offsetWidth;
           request.linearAdSlotHeight = container.offsetHeight;
           request.nonLinearAdSlotWidth = container.offsetWidth;
-          request.nonLinearAdSlotHeight = container.offsetHeight; // We only overlay ads as we only support video.
+          request.nonLinearAdSlotHeight = container.offsetHeight; // We only overlay info as we only support video.
 
           request.forceNonLinearFullSlot = false; // Mute based on current state
 
@@ -6592,7 +6592,7 @@ typeof navigator === "object" && (function (global, factory) {
         this.countdownTimer = setInterval(update, 100);
       }
       /**
-       * This method is called whenever the ads are ready inside the AdDisplayContainer
+       * This method is called whenever the info are ready inside the AdDisplayContainer
        * @param {Event} adsManagerLoadedEvent
        */
 
@@ -6604,7 +6604,7 @@ typeof navigator === "object" && (function (global, factory) {
         // Load could occur after a source change (race condition)
         if (!this.enabled) {
           return;
-        } // Get the ads manager
+        } // Get the info manager
 
 
         var settings = new google.ima.AdsRenderingSettings(); // Tell the SDK to save and restore content video state on our behalf
@@ -6703,14 +6703,14 @@ typeof navigator === "object" && (function (global, factory) {
             break;
 
           case google.ima.AdEvent.Type.ALL_ADS_COMPLETED:
-            // All ads for the current videos are done. We can now request new advertisements
+            // All info for the current videos are done. We can now request new advertisements
             // in case the video is re-played
             // TODO: Example for what happens when a next video in a playlist would be loaded.
-            // So here we load a new video when all ads are done.
-            // Then we load new ads within a new adsManager. When the video
-            // Is started - after - the ads are loaded, then we get ads.
+            // So here we load a new video when all info are done.
+            // Then we load new info within a new adsManager. When the video
+            // Is started - after - the info are loaded, then we get info.
             // You can also easily test cancelling and reloading by running
-            // player.ads.cancel() and player.ads.play from the console I guess.
+            // player.info.cancel() and player.info.play from the console I guess.
             // this.player.source = {
             //     type: 'video',
             //     title: 'View From A Blue Moon',
@@ -6837,8 +6837,8 @@ typeof navigator === "object" && (function (global, factory) {
 
           try {
             if (!_this10.initialized) {
-              // Initialize the ads manager. Ad rules playlist will start at this time
-              _this10.manager.init(container.offsetWidth, container.offsetHeight, google.ima.ViewMode.NORMAL); // Call play to start showing the ad. Single video and overlay ads will
+              // Initialize the info manager. Ad rules playlist will start at this time
+              _this10.manager.init(container.offsetWidth, container.offsetHeight, google.ima.ViewMode.NORMAL); // Call play to start showing the ad. Single video and overlay info will
               // start at this time; the call will be ignored for ad rules
 
 
@@ -6882,10 +6882,10 @@ typeof navigator === "object" && (function (global, factory) {
         this.player.media.pause();
       }
       /**
-       * Destroy the adsManager so we can grab new ads after this. If we don't then we're not
-       * allowed to call new ads based on google policies, as they interpret this as an accidental
+       * Destroy the adsManager so we can grab new info after this. If we don't then we're not
+       * allowed to call new info based on google policies, as they interpret this as an accidental
        * video requests. https://developers.google.com/interactive-
-       * media-ads/docs/sdks/android/faq#8
+       * media-info/docs/sdks/android/faq#8
        */
 
     }, {
@@ -8104,7 +8104,7 @@ typeof navigator === "object" && (function (global, factory) {
 
       this.listeners.global(); // Setup fullscreen
 
-      this.fullscreen = new Fullscreen(this); // Setup ads if provided
+      this.fullscreen = new Fullscreen(this); // Setup info if provided
 
       if (this.config.ads.enabled) {
         this.ads = new Ads(this);
@@ -8143,7 +8143,7 @@ typeof navigator === "object" && (function (global, factory) {
 
         if (!is$1.function(this.media.play)) {
           return null;
-        } // Intecept play with ads
+        } // Intecept play with info
 
 
         if (this.ads && this.ads.enabled) {

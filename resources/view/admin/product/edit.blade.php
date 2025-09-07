@@ -60,7 +60,7 @@
                                             <?= errorText('description') ?>
                                         </section>
                                     </div>
-                                    <input type="hidden" name="_method" value="put">
+                                    <?= byMethod('put') ?>
                                     <div class="col-md-6">
                                         <section class="form-group">
                                             <button type="submit" class="btn btn-primary">ویرایش</button>

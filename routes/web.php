@@ -31,6 +31,10 @@ Route::post('/news-letter','HomeController@newsLetter','newsLetter');
 
 // user-panel
 Route::get('/my-panel','UserController@index','my.panel.index');
+Route::get('/my-panel/info','UserController@info','my.panel.info');
+Route::post('/my-panel/change/info','UserController@changeInfo','my.panel.change.info');
+Route::get('/my-panel/orders','UserController@order','my.panel.order');
+Route::get('/my-panel/orders/show/{id}','UserController@orderShow','my.panel.order.show');
 
 
 // cart
@@ -40,7 +44,7 @@ Route::get('/cart/remove-number/{id}','CartController@removeItemNumber','cart.re
 Route::get('/cart','CartController@cart','cart.showCart');
 
 // cart-payment
-Route::get('/payment','CartController@cart','cart.showCart');
+Route::get('/payment','PaymentController@payment','payment');
 
 
 

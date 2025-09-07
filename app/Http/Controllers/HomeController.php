@@ -19,6 +19,11 @@ use System\Auth\Auth;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        expirationDate();
+    }
+
     public function index()
     {
         $products = Product::where('status',1)->orderBy('created_at','DESC')->limit(0,8)->get();

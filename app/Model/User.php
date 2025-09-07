@@ -36,7 +36,7 @@ class User extends Model
     | that need filling
     |
     */
-    protected $fillable = ['email', 'first_name', 'last_name', 'avatar', 'status', 'is_active', 'password', 'verify_token', 'user_type', 'remember_token', 'remember_token_expire'];
+    protected $fillable = ['email', 'first_name', 'last_name', 'avatar', 'status', 'is_active', 'password', 'address', 'zip_code', 'verify_token', 'user_type', 'remember_token', 'remember_token_expire'];
 
     /*
     |--------------------------------------------------------------------------

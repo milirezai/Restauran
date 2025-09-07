@@ -46,13 +46,13 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Your Name">
+                                <input type="text" value="<?= old('name') ?>" class="form-control" name="name" id="name" placeholder="Your Name">
                                 <label for="name">Your Name</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
+                                <input type="email" value="<?= old('email') ?>" class="form-control" name="email" id="email" placeholder="Your Email">
                                 <label for="email">Your Email</label>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <textarea name="description" class="form-control" placeholder="Special Request" id="message" style="height: 100px"></textarea>
+                                <textarea name="description" class="form-control" placeholder="Special Request" id="message" style="height: 100px"><?= old('description') ?></textarea>
                                 <label for="message">Special Request</label>
                             </div>
                         </div>

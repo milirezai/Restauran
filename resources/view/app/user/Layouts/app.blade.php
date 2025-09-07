@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-   @include('admin.layouts.head-tag')
+   @include('app.user.layouts.head-tag')
    @yield('head-tag')
 </head>
 
@@ -39,7 +39,7 @@
 
 
 
-    @include('admin.layouts.sidebar')
+    @include('app.user.layouts.sidebar')
 
 
     <!-- BEGIN: Content-->
@@ -58,7 +58,7 @@
     <div class="sidenav-overlay"></div>
     <div class="drag-target"></div>
 
-    @include('admin.layouts.scripts')
+    @include('app.user.layouts.scripts')
     @yield('script')
 </body>
 

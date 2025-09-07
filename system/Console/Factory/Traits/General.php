@@ -4,6 +4,7 @@ use System\Config\Env;
 
 trait General
 {
+    private $className;
     public function msg($msg,$color)
     {
         switch ($color)
@@ -32,8 +33,10 @@ trait General
         $paths = require dirname(__DIR__) . "/Commands/MovePaths.php";
         return $paths[$path].$name.".php";
     }
+
     public function _v()
     {
         return $this->msg('Monarch framework '.Env::get('V_FRAMEWORK'),'green');
     }
+
 }

@@ -18,7 +18,8 @@
                <div class="card-content">
                   <div class="card-body card-dashboard">
                      <form class="row" action="<?= route('admin.ourTeam.update',[$user->id]) ?>" method="post" enctype="multipart/form-data">
-                        <div class="col-md-6">
+                         <?= byMethod('put') ?>
+                         <div class="col-md-6">
                            <fieldset class="form-group">
                               <label for="first_name">نام</label>
                               <input value="<?= empty(old('first_name')) ? $user->first_name : old('first_name') ?>" name="first_name" type="text" id="first_name" class="form-control <?= errorClass('first_name') ?>" placeholder="نام ...">
@@ -46,7 +47,6 @@
                                  <?= errorText('position') ?>
                              </fieldset>
                          </div>
-                         <input type="hidden" name="_method" value="put">
                         <div class="col-md-6">
                            <section class="form-group">
                               <button type="submit" class="btn btn-primary">ویرایش</button>

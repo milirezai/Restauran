@@ -26,7 +26,7 @@ function html($text)
     return html_entity_decode($text);
 }
 
-function old($name)
+function old($name, $defult = null)
 {
     if (isset($_SESSION["temporary_old"][$name]))
     {
@@ -34,7 +34,7 @@ function old($name)
     }
     else
     {
-        return null;
+        return $defult;
     }
 }
 
@@ -230,4 +230,13 @@ function move($file, $path, $name, $width = null, $height = null)
 function sendMail($emailAddress, $subject, $body)
 {
    return System\Service\Support\Mail\Mail::send($emailAddress, $subject, $body);
+}
+
+function byMethod($method)
+{
+    return htmlCode($method);
+}
+function htmlCode($method)
+{
+    return "<input type='hidden' name='_method' value=$method>";
 }

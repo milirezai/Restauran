@@ -20,7 +20,7 @@
             <li class=" nav-item"><a href="<?= route('admin.index') ?>"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">خانه</span></a></li>
             <li class=" nav-item "><a href="<?= route('admin.category.index') ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">دسته بندی</span></a></li>
             <li class=" nav-item "><a href="<?= route('admin.product.index') ?>"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">بلاگ</span></a></li>
-            <li class=" nav-item"><a href="<?= route('admin.ads.index') ?>"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">آگهی</span></a></li>
+            <li class=" nav-item"><a href="<?= route('admin.info.index') ?>"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">آگهی</span></a></li>
             <li class=" nav-item"><a href="<?= route('admin.newsLetter.index') ?>"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">نظرات</span></a></li>
             <li class=" nav-item"><a href="<?= route('admin.users.index') ?>"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">کاربران</span></a></li>
             <li class=" nav-item"><a href="<?= route('index') ?>"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">بازگشت به سایت</span></a></li>

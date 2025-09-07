@@ -7,7 +7,7 @@ class OurTeamRequest extends Request
 {
     public function rules()
     {
-        if (methodField() == 'put')
+        if ($this->isMethod('put'))
         {
             return
                 [
@@ -28,4 +28,5 @@ class OurTeamRequest extends Request
                 ];
         }
     }
+
 }
