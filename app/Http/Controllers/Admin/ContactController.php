@@ -23,11 +23,13 @@ class ContactController extends AdminController
             return back();
         $contact = Contact::find($id);
         sendMail($contact->email,"تماس با ما",answerForMessageContact($answer));
+        with('swal-success','پاسخ با موفقیت ارسال شد!');
         return redirect(route('admin.contact.index'));
     }
     public function destroy($id)
     {
         Contact::delete($id);
+        with('swal-error','پیام تماس با ما حذف شد');
         return back();
     }
 }

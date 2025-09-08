@@ -221,6 +221,10 @@ function redirect($url)
     header("Location: ".$url);
     exit;
 }
+function redirectRoute($route)
+{
+    return redirect(route($route));
+}
 
 function move($file, $path, $name, $width = null, $height = null)
 {
@@ -239,4 +243,39 @@ function byMethod($method)
 function htmlCode($method)
 {
     return "<input type='hidden' name='_method' value=$method>";
+}
+
+function with($name, $value)
+{
+    removeSession($name);
+    \App\Model\Session::create([
+        'name' => $name,
+        'value' => $value,
+        'expiration_date' => time()+2
+    ]);
+    \System\Session\Session::set($name, $value);
+}
+function session($name)
+{
+    removeSession($name);
+    $session = \System\Session\Session::get($name);
+    if ($session)
+        {
+            return $session;
+        }
+        else
+        {
+            return false;
+        }
+}
+function removeSession($name)
+{
+    $session = \App\Model\Session::where('name',$name)->get();
+    if ($session[0]->expiration_date < time())
+    {
+        \System\Session\Session::remove($name);
+        foreach ($session as $item){
+            \App\Model\Session::delete($item->id);
+        }
+    }
 }

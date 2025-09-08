@@ -16,6 +16,7 @@ class PaymentController extends AdminController
         $confirmed = $payment->pay_confirmed == 1 ? 0 : 1;
         $payment->pay_confirmed = $confirmed;
         $payment->save();
+        with('swal-success','تغییر وضعیت انجام شد!');
         return back();
     }
 }

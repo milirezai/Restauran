@@ -16,6 +16,7 @@ class UserController extends AdminController
         $status = $user->is_active == 1 ? 0 : 1 ;
         $user->is_active = $status;
         $user->save();
+        with('swal-success','تغییر وضعیت انجام شد!');
         return back();
     }
 

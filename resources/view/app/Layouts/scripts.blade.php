@@ -14,5 +14,5 @@
 <script src="<?= asset('assets/js/main.js') ?>"></script>
 
 // cart
-<script src="<?= asset('assets/js/cart/jquery.js') ?>"></script>
-<script src="<?= asset('assets/js/cart/app.js') ?>"></script>
+<script src="<?= asset('assets/js/jquery.js') ?>"></script>
+<script src="<?= asset('assets/js/app.js') ?>"></script>

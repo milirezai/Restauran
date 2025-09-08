@@ -48,7 +48,9 @@
                                             <td><?= $order->payStatus() ?></td>
                                             <td><?= $order->created_at ?></td>
                                             <td>
+                                                <?php if ($order->status != 1) {?>
                                                 <a href="<?= route('admin.orders.delivery',[$order->id]) ?>" class="btn btn-primary">ارسال شد</a>
+                                                <?php }?>
 
                                                 <a href="<?= route('admin.orders.show',[$order->id]) ?>" class="btn btn-info">نمایش</a>
 

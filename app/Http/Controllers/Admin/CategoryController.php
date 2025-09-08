@@ -21,10 +21,12 @@ class CategoryController extends AdminController
         $request = new CategoryRequest();
         $input = $request->all();
         Category::create($input);
-        return redirect(route('admin.category.index'));
+        with('swal-success','دسته بندی جدید با موفقیت ثبت شد');
+        return redirectRoute('admin.category.index');
     }
     public function destroy($id){
         Category::delete($id);
+        with('swal-error','دسته بندی  با موفقیت حذف شد! ');
         return back();
     }
 
@@ -39,6 +41,7 @@ class CategoryController extends AdminController
         $request = new CategoryRequest();
         $input = $request->all();
         Category::update(array_merge($input, ['id' => $id]));
+        with('swal-success','دسته بندی  با موفقیت ویرایش  شد');
         return redirect(route('admin.category.index'));
     }
 

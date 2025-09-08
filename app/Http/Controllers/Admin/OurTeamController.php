@@ -18,6 +18,7 @@ class OurTeamController extends AdminController
         $status = $user->status == 0 ? 1 : 0 ;
         $user->status = $status;
         $user->save();
+        with('swal-success','تغییر وضعیت انجام شد!');
         return back();
     }
     public function create()
@@ -35,6 +36,7 @@ class OurTeamController extends AdminController
         $inputs['status'] = 0;
         $inputs['is_active'] = 0;
         OurTeam::create($inputs);
+        with('swal-success','عضو جدید با موفقیت به تیم اضافه شد');
         return redirect(route('admin.ourTeam.index'));
     }
 
@@ -56,11 +58,13 @@ class OurTeamController extends AdminController
         }
         $inputs['id'] = $id;
         OurTeam::update($inputs);
+        with('swal-success','عضو با موفقیت ویرایش شد');
         return redirect(route('admin.ourTeam.index'));
     }
     public function destroy($id)
     {
         OurTeam::delete($id);
+        with('swal-error','عضو تیم  با حذف شد! ');
         return back();
     }
 }

@@ -18,11 +18,13 @@ class ProductController extends AdminController
         $status = $product->status == 0 ? '1' : '0';
         $product->status = $status;
         $product->save();
+        with('swal-success','تغییر وضعیت انجام شد!');
         return back();
     }
     public function destroy($id)
     {
         Product::delete($id);
+        with('swal-error','محصول  با موفقیت حذف شد! ');
         return back();
     }
     public function create()
@@ -40,6 +42,7 @@ class ProductController extends AdminController
         $inputs['image']= move($file, $path, $image, 800 , 532);
         $inputs['status'] = 0;
         Product::create($inputs);
+        with('swal-success','محصول  جدید با موفقیت ثبت شد');
         return redirect(route('admin.product.index'));
     }
     public function edit($id)
@@ -62,6 +65,7 @@ class ProductController extends AdminController
         $inputs['status'] = 0;
         $inputs['id'] = $id;
         Product::update($inputs);
+        with('swal-success','محصول   با موفقیت ویرایش شد');
         return redirect(route('admin.product.index'));
     }
 }

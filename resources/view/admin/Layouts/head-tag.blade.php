@@ -37,3 +37,5 @@
 <!-- BEGIN: Custom CSS-->
 <link rel="stylesheet" type="text/css" href="<?= asset('admin-assets/css-rtl/custom-rtl.css') ?>">
 <!-- END: Custom CSS-->
+
+<link rel="stylesheet" href="<?= asset('sweetalert/sweetalert2.css') ?>">

@@ -22,6 +22,7 @@ class NewsLetterController extends Controller
             return back();
         $newsLetter = NewsLetter::find($id);
         sendMail($newsLetter->email,"خبرنامه",messageNewsLetter($answer));
+        with('swal-success','پیام خبر نامه با موفقیت ارسال شد');
         return redirect(route('admin.newsLetter.index'));
     }
 }

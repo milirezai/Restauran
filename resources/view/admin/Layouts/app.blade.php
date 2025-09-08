@@ -60,6 +60,11 @@
 
     @include('admin.layouts.scripts')
     @yield('script')
+
+    @include('alerts.sweetalert.error')
+    @include('alerts.sweetalert.success')
+
+
 </body>
 
 </html>

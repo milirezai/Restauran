@@ -13,7 +13,7 @@ use System\Database\ORM\Model;
 |
 */
 
-class CartItem extends Model
+class Session extends Model
 {
 
     /*
@@ -25,7 +25,7 @@ class CartItem extends Model
     | Stores the table name represented by this class.
     |
     */
-    protected $table = 'cart_items';
+    protected $table = 'sessions';
 
     /*
     |--------------------------------------------------------------------------
@@ -36,7 +36,7 @@ class CartItem extends Model
     | that need filling
     |
     */
-    protected $fillable= ['user_id', 'product_id', 'number', 'expiration_date'];
+    protected $fillable= ['name','value','expiration_date'];
 
     /*
     |--------------------------------------------------------------------------
@@ -87,16 +87,6 @@ class CartItem extends Model
 
     protected $updatedAT= 'updated_at';
 
-    protected $deletedAT= 'deleted_at';
-
-    public function product()
-    {
-        return $this->belongsTo('App\Model\Product','product_id','id');
-    }
-
-    public function price()
-    {
-        return $this->product()->price * $this->number;
-    }
+    protected $deletedAT= null;
 
 }

@@ -15,6 +15,7 @@ class BookingController extends AdminController
         $booking->status = 1;
         $booking->save();
         sendMail($booking->email,"رزرو میز",confirmedMessageBooking());
+        with('swal-success','رزرو با موفقیت تایید شد');
         return back();
     }
 
@@ -24,6 +25,7 @@ class BookingController extends AdminController
         $booking->status = 0;
         $booking->save();
         sendMail($booking->email,"رزرو میز",cancelMessageBooking());
+        with('swal-error','رزرو لغو شد');
         return back();
     }
 }

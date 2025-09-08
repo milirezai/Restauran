@@ -23,6 +23,7 @@ class OrderController extends AdminController
         $order = Order::find($id);
         $order->status = 1;
         $order->save();
+        with('swal-success','سفارش ارسال شد');
         return back();
     }
 }

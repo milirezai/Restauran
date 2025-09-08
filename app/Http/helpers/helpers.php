@@ -114,8 +114,9 @@ function addItemCart($id)
 {
     if (!itemExists($id))
         return back();
-    $inputs = ['user_id' => Auth::user()->id, 'product_id' => $id];
+    $inputs = ['user_id' => Auth::user()->id, 'product_id' => $id, 'expiration_date' => time()+1800];
     \App\Model\CartItem::create($inputs);
+    with('toast-success','add cart');
     return back();
 }
 
@@ -157,9 +158,6 @@ function removeItemNumber($id)
         return true;
     }
     return false;
-}
-function addOrderNumberId($id)
-{
 }
 
 function totalPrice()
@@ -208,7 +206,7 @@ function addOrder()
             'order_final_amount' => totalPrice(),
             'expiration_date' => time()+1800
         ]);
-        $order_id = Order::where('user_id',Auth::user()->id)->where('payment_status',0)->where('status',0)->where('expiration_date','>',time())->get();
+        $order_id = Order::where('user_id',Auth::user()->id)->where('payment_status',0)->where('status',0)->where('expiration_date','>',time())->orderBy('id','desc')->get();
         return $order_id[0]->id;
     }
 }
@@ -220,6 +218,22 @@ function removeCartItem()
 }
 
 function expirationDate()
+{
+    expirationDateCartItem();
+    expirationDateOrder();
+    expirationDateOrderItem();
+}
+
+function expirationDateCartItem()
+{
+    foreach (allItemCart() as $item){
+        if ($item->expiration_date < time())
+        {
+            CartItem::delete($item->id);
+        }
+    }
+}
+function expirationDateOrder()
 {
     $orders = Order::where('expiration_date','<',time())->where('user_id',Auth::user()->id)->where('status',0)->where('payment_status',0)->get();
     if (count($orders) > 0)
@@ -233,6 +247,10 @@ function expirationDate()
             }
         }
     }
+}
+function expirationDateOrderItem()
+{
+    $orders = Order::where('expiration_date','<',time())->where('user_id',Auth::user()->id)->where('status',0)->where('payment_status',0)->get();
     foreach ($orders as $order)
     {
         Order::delete($order->id);
