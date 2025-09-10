@@ -25,3 +25,5 @@
 
 <!-- Template Stylesheet -->
 <link href="<?= asset('assets/css/style.css') ?>" rel="stylesheet">
+
+<link rel="stylesheet" href="<?= asset('sweetalert/sweetalert2.css') ?>">

@@ -204,7 +204,7 @@ function addOrder()
         Order::create([
             'user_id' => Auth::user()->id,
             'order_final_amount' => totalPrice(),
-            'expiration_date' => time()+1800
+            'expiration_date' => time()+120
         ]);
         $order_id = Order::where('user_id',Auth::user()->id)->where('payment_status',0)->where('status',0)->where('expiration_date','>',time())->orderBy('id','desc')->get();
         return $order_id[0]->id;
@@ -220,8 +220,8 @@ function removeCartItem()
 function expirationDate()
 {
     expirationDateCartItem();
-    expirationDateOrder();
     expirationDateOrderItem();
+    expirationDateOrder();
 }
 
 function expirationDateCartItem()
@@ -233,26 +233,106 @@ function expirationDateCartItem()
         }
     }
 }
-function expirationDateOrder()
-{
-    $orders = Order::where('expiration_date','<',time())->where('user_id',Auth::user()->id)->where('status',0)->where('payment_status',0)->get();
-    if (count($orders) > 0)
-    {
-        foreach ($orders as $ordersItem)
-        {
-            $items = $ordersItem->orderItems()->get();
-            foreach ($items as $item)
-            {
-                OrderItem::delete($item->id);
-            }
-        }
-    }
-}
 function expirationDateOrderItem()
 {
-    $orders = Order::where('expiration_date','<',time())->where('user_id',Auth::user()->id)->where('status',0)->where('payment_status',0)->get();
+    $orderItems = OrderItem::where('expiration_date','<',time())->where('status',0)->get();
+        foreach ($orderItems as $orderItem)
+        {
+                OrderItem::delete($orderItem->id);
+        }
+}
+function expirationDateOrder()
+{
+    $orders = Order::where('expiration_date','<',time())->where('status',0)->where('payment_status',0)->get();
     foreach ($orders as $order)
     {
         Order::delete($order->id);
     }
+}
+
+function paymet()
+{
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://gateway.zibal.ir/v1/request',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => '{
+  "merchant": "zibal",
+  "amount": '.orderFinalAmount()->order_final_amount.',
+  "callbackUrl": "https://sabzlearn.ir/lesson/53-28613/",
+  "orderId": '.orderFinalAmount()->id.'
+}',
+        CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json'
+        ),
+    ));
+
+    $response = curl_exec($curl);
+    curl_close($curl);
+    $response = json_decode($response);
+    if ($response->result == 100)
+        return true;
+    else
+        return false;
+}
+
+function orderFinalAmount()
+{
+    $order = Order::where('user_id',Auth::user()->where('expiration_date','>',time())->where('status',0)->where('payment_status',0)->id)->orderBy('created_at','desc')->get();
+    return $order[0];
+}
+// verify
+function verify()
+{
+    $success = isset($_GET['success']) ? $_GET['success'] : false;
+    $status = isset($_GET['status']) ? $_GET['status'] : false;
+    $trackId = isset($_GET['trackId']) ? $_GET['trackId'] : false;
+    $orderId = isset($_GET['orderId']) ? $_GET['orderId'] : false;
+    if ($success and $status and $trackId and $orderId)
+    {
+        addNewPayment($orderId,$status);
+        verifyOrder($orderId);
+        verifyOrderItems($orderId);
+        with('swal-success','پرداخت با موفقیت انجام شد');
+        return redirectRoute('index');
+    }
+    else
+    {
+        with('swal-error','مشکلی در پرداخت به وجود آمده لطفا بعدا امتحان کنید!');
+        return redirectRoute('index');
+    }
+}
+
+function addNewPayment($oder_id, $status)
+{
+    $payment = ['amount' => orderFinalAmount()->order_final_amount, 'user_id' => Auth::user()->id, 'pay_date' => date("Y-m-d H:i:s"), 'order_id' => $oder_id, 'status' => $status ];
+    \App\Model\Payment::create($payment);
+}
+
+function selectPayment()
+{
+    $payment = \App\Model\Payment::where('user_id',Auth::user()->id)->where('status',0)->orderBy('created_at','desc')->get();
+    return $payment[0];
+}
+
+function verifyOrder($orderId)
+{
+    $order = Order::find($orderId);
+    $order->payment_id = selectPayment()->id;
+    $order->payment_status = selectPayment()->status;
+    $order->status = 1;
+    $order->save();
+}
+function verifyOrderItems($orderId)
+{
+    $orderItems = OrderItem::where('order_id',$orderId)->where('user_id',Auth::user()->id)->get();
+    $orderItems->status = 1;
+    $orderItems->save();
 }

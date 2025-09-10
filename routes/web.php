@@ -45,6 +45,7 @@ Route::get('/cart','CartController@cart','cart.showCart');
 
 // cart-payment
 Route::get('/payment','PaymentController@payment','payment');
+Route::get('/payment/verify','PaymentController@verify','payment.verify');
 
 
 

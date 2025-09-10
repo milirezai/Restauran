@@ -132,14 +132,12 @@
     @include('app.layouts.scripts')
     @yield('script')
 
-
 @include('alerts.sweetalert.error')
 @include('alerts.sweetalert.success')
 
-<section class="toast-wrapper flex-row-reverse">
-    @include('alerts.toast.success')
-    @include('alerts.toast.error')
-</section>
+
+
+
 
 
 

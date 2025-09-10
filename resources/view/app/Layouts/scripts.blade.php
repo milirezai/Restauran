@@ -16,3 +16,6 @@
 // cart
 <script src="<?= asset('assets/js/jquery.js') ?>"></script>
 <script src="<?= asset('assets/js/app.js') ?>"></script>
+
+<script src="<?= asset('sweetalert/sweetalert2.min.js') ?>"></script>
+
