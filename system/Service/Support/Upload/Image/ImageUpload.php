@@ -38,4 +38,14 @@ class ImageUpload extends Upload
         return $path;
     }
 
+    public static function delete($imagePath)
+    {
+        if(file_exists($imagePath))
+        {
+            unlink($imagePath);
+            return true;
+        }
+        return false;
+    }
+
 }

@@ -37,7 +37,7 @@ class Order extends Model
     | that need filling
     |
     */
-    protected $fillable= ['user_id','product_id','price','order_number_id','status', 'expiration_date', 'order_final_amount','is_active','number'];
+    protected $fillable= ['user_id', 'payment_id', 'payment_status', 'product_id','price','order_number_id','status', 'expiration_date', 'order_final_amount','is_active','number'];
 
     /*
     |--------------------------------------------------------------------------
@@ -108,7 +108,7 @@ class Order extends Model
     }
     public function payStatus()
     {
-        return $this->payment_status == 1 ? 'پرداخت شده' : 'پرداخت نشده' ;
+        return status($this->payment_status);
     }
     public function payment()
     {

@@ -52,7 +52,7 @@
                                                 <a href="<?= route('admin.orders.delivery',[$order->id]) ?>" class="btn btn-primary">ارسال شد</a>
                                                 <?php }?>
 
-                                                <a href="<?= route('admin.orders.show',[$order->id]) ?>" class="btn btn-info">نمایش</a>
+                                                <a href="<?= route('admin.orders.show',[$order->id]) ?>" class="btn btn-info mt-2">نمایش</a>
 
 
                                             </td>

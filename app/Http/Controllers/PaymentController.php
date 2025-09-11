@@ -10,15 +10,16 @@ class PaymentController extends CartController
     {
         if (Auth::user()->address == null)
         {
+            with('swal-error','لطفا ابتدا فیلد آدرس خود را کامل کنید وبعد دوباره امنحان کنید!');
             return redirect(route('my.panel.info'));
         }
     }
 
     public function payment()
     {
-        addOrderItemsAndOrder();
+        addOrderItemsAndOrder();https:
         if (paymet())
-            header("location: https://gateway.zibal.ir/start/".paymet()->trackId);
+             header("location: https://gateway.zibal.ir/start/".paymet()->trackId);
         else{
             with('swal-error','مشکلی در پرداخت به وجود آمده لطفا بعدا امتحان کنید!');
             return redirectRoute('index');
@@ -27,6 +28,6 @@ class PaymentController extends CartController
 
     public function verify()
     {
-        verify();
+        addPayment();
     }
 }

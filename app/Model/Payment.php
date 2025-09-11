@@ -36,7 +36,7 @@ class Payment extends Model
     | that need filling
     |
     */
-    protected $fillable= ['amount', 'user_id', 'pay_date', 'status', 'pay_confirmed'];
+    protected $fillable= ['amount', 'user_id', 'pay_date', 'status', 'pay_confirmed', 'order_id', 'trackId'];
 
     /*
     |--------------------------------------------------------------------------
@@ -99,7 +99,7 @@ class Payment extends Model
     }
     public function status()
     {
-        return $this->status == 1 ? 'پرداخت شده' : 'درحال پرداخت';
+        return status($this->status);
     }
     public function confirmed()
     {

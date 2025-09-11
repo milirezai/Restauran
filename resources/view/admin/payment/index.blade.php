@@ -40,9 +40,9 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php foreach ($payments as $payment) { ?>
+                                        <?php foreach ($payments as $key => $payment) { ?>
                                         <tr>
-                                            <td><?= $payment->id ?></td>
+                                            <td><?= $key +=1 ?></td>
                                             <td><?= $payment->amount ?></td>
                                             <td><?= $payment->user()->first_name.' '.$payment->user()->last_name ?></td>
                                             <td><?= $payment->pay_date ?></td>
@@ -55,8 +55,7 @@
                                                 <?php } else { ?>
                                                 <a href="<?= route('admin.payments.confirmed',[$payment->id]) ?>" class="btn btn-success">تایید</a>
                                                 <?php } ?>
-
-
+                                                <a href="<?= route('admin.payments.verify',[$payment->id])?>" class="btn btn-success mt-2">verfiy</a>
                                             </td>
                                         </tr>
                                         <?php } ?>

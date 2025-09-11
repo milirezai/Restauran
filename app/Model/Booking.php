@@ -90,7 +90,7 @@ class Booking extends Model
     protected $deletedAT= 'deleted_at';
     public function status()
     {
-        return $this->status == 0 ? 'غیرفعال' : 'فعال';
+        return $this->status == 0 ? 'تایید نشده' : 'تایید شد';
     }
 
 }

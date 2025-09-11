@@ -279,3 +279,8 @@ function removeSession($name)
         }
     }
 }
+
+function deleteImage($path)
+{
+   return \System\Service\Support\Upload\Image\ImageUpload::delete($path);
+}

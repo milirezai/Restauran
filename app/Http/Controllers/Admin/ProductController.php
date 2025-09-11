@@ -62,7 +62,6 @@ class ProductController extends AdminController
             $image=date('Y_m_d_H_i_s_').rand(10,99);
             $inputs['image']= move($file, $path, $image, 800 , 532);
         }
-        $inputs['status'] = 0;
         $inputs['id'] = $id;
         Product::update($inputs);
         with('swal-success','محصول   با موفقیت ویرایش شد');

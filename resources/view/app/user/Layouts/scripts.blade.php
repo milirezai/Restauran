@@ -23,3 +23,5 @@
 <script src="<?= asset('admin-assets/js/scripts/components.js') ?>"></script>
 <!-- END: Theme JS-->
 <script src="<?= asset('admin-assets/js/scripts/datatables/datatable.js') ?>"></script>
+
+    <script src="<?= asset('sweetalert/sweetalert2.min.js') ?>"></script>

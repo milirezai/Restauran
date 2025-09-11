@@ -8,11 +8,11 @@
 
         <div class="container-xxl py-5 bg-dark hero-header mb-5">
             <div class="container text-center my-5 pt-5 pb-4">
-                <h1 class="display-3 text-white mb-3 animated slideInDown">Food Menu</h1>
+                <h1 class="display-3 text-white mb-3 animated slideInDown">منو</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center text-uppercase">
-                        <li class="breadcrumb-item"><a href="<?= route('index') ?>">Home</a></li>
-                         <li class="breadcrumb-item text-white active" aria-current="page">Menu</li>
+                        <li class="breadcrumb-item"><a href="<?= route('index') ?>">خانه</a></li>
+                         <li class="breadcrumb-item text-white active" aria-current="page">منو</li>
                     </ol>
                 </nav>
             </div>
@@ -45,7 +45,7 @@
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span><?= $product->name ?></span>
-                                                <span class="text-primary"> $ <?= $product->price ?></span>
+                                                <span class="text-primary"> تومان <?= $product->price ?></span>
                                             </h5>
                                             <h6 class="d-flex justify-content-between">
                                                 <small class="fst-italic"><?= $product->name ?></small>

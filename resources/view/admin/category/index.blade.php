@@ -28,9 +28,9 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <?php foreach($categories as $category) {  ?>
+                                                <?php foreach($categories as $key => $category) {  ?>
                                                     <tr role="row" class="odd">
-                                                        <td class="sorting_1"><?= $category->id ?></td>
+                                                        <td class="sorting_1"><?= $key += 1 ?></td>
                                                         <td><?= $category->name ?></td>
                                                         <td style="min-width: 6rem; text-align: left;">
                                                             <a href="<?= route('admin.category.edit',[$category->id]) ?>" class="btn btn-info waves-effect waves-light">ویرایش</a>

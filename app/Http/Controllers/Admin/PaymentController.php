@@ -19,4 +19,9 @@ class PaymentController extends AdminController
         with('swal-success','تغییر وضعیت انجام شد!');
         return back();
     }
+    public function verify($id)
+    {
+        $payment = Payment::find($id);
+        verifyPayment($payment->trackId,$payment->order_id);
+    }
 }

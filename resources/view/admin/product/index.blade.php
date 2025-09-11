@@ -36,9 +36,9 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php foreach ($products as $product ) { ?>
+                                        <?php foreach ($products as $key => $product ) { ?>
                                         <tr role="row" class="odd">
-                                            <td><?= $product->id ?></td>
+                                            <td><?= $key += 1 ?></td>
                                             <td><?= $product->name ?></td>
                                             <td><?= $product->price ?></td>
                                             <td><?= substr(html_entity_decode($product->description),0,20).'...' ?></td>

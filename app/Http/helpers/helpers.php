@@ -113,10 +113,13 @@ function passwordRecoveryMsg($token)
 function addItemCart($id)
 {
     if (!itemExists($id))
+    {
+        with('swal-success','محصول به سبد خرید اضافه شد');
         return back();
+    }
     $inputs = ['user_id' => Auth::user()->id, 'product_id' => $id, 'expiration_date' => time()+1800];
     \App\Model\CartItem::create($inputs);
-    with('toast-success','add cart');
+    with('swal-success','محصول به سبد خرید اضافه شد');
     return back();
 }
 
@@ -145,6 +148,7 @@ function itemExists($id)
 function removeItem($id)
 {
     \App\Model\CartItem::delete($id);
+    with('swal-error','محصول از سبد خرید  با موفقیت حذف شد ');
     return back();
 }
 function removeItemNumber($id)
@@ -266,7 +270,7 @@ function paymet()
         CURLOPT_POSTFIELDS => '{
   "merchant": "zibal",
   "amount": '.orderFinalAmount()->order_final_amount.',
-  "callbackUrl": "https://sabzlearn.ir/lesson/53-28613/",
+  "callbackUrl": "http://localhost:8041/payment/verify",
   "orderId": '.orderFinalAmount()->id.'
 }',
         CURLOPT_HTTPHEADER => array(
@@ -278,7 +282,7 @@ function paymet()
     curl_close($curl);
     $response = json_decode($response);
     if ($response->result == 100)
-        return true;
+        return $response;
     else
         return false;
 }
@@ -289,15 +293,15 @@ function orderFinalAmount()
     return $order[0];
 }
 // verify
-function verify()
+function addPayment()
 {
-    $success = isset($_GET['success']) ? $_GET['success'] : false;
-    $status = isset($_GET['status']) ? $_GET['status'] : false;
-    $trackId = isset($_GET['trackId']) ? $_GET['trackId'] : false;
-    $orderId = isset($_GET['orderId']) ? $_GET['orderId'] : false;
+     $success = isset($_GET['success']) ? $_GET['success'] : false;
+     $status = isset($_GET['status']) ? $_GET['status'] : false;
+     $trackId = isset($_GET['trackId']) ? $_GET['trackId'] : false;
+     $orderId = isset($_GET['orderId']) ? $_GET['orderId'] : false;
     if ($success and $status and $trackId and $orderId)
     {
-        addNewPayment($orderId,$status);
+        addNewPayment($orderId,$status,$trackId);
         verifyOrder($orderId);
         verifyOrderItems($orderId);
         with('swal-success','پرداخت با موفقیت انجام شد');
@@ -310,29 +314,160 @@ function verify()
     }
 }
 
-function addNewPayment($oder_id, $status)
+function addNewPayment($order_id, $status, $trackId)
 {
-    $payment = ['amount' => orderFinalAmount()->order_final_amount, 'user_id' => Auth::user()->id, 'pay_date' => date("Y-m-d H:i:s"), 'order_id' => $oder_id, 'status' => $status ];
+    $payment = ['amount' => orderFinalAmount()->order_final_amount, 'user_id' => Auth::user()->id, 'pay_date' => date("Y-m-d H:i:s"), 'order_id' => $order_id, 'status' => $status ,'trackId' => $trackId];
     \App\Model\Payment::create($payment);
 }
 
 function selectPayment()
 {
-    $payment = \App\Model\Payment::where('user_id',Auth::user()->id)->where('status',0)->orderBy('created_at','desc')->get();
+    $payment = \App\Model\Payment::where('user_id',Auth::user()->id)->where('status','>',0)->orderBy('created_at','desc')->get();
     return $payment[0];
 }
 
-function verifyOrder($orderId)
+function verifyOrder($order_id)
 {
-    $order = Order::find($orderId);
+    $order = Order::find($order_id);
     $order->payment_id = selectPayment()->id;
     $order->payment_status = selectPayment()->status;
-    $order->status = 1;
     $order->save();
 }
 function verifyOrderItems($orderId)
 {
     $orderItems = OrderItem::where('order_id',$orderId)->where('user_id',Auth::user()->id)->get();
-    $orderItems->status = 1;
-    $orderItems->save();
+    foreach ($orderItems as $orderItem) {
+        $orderItem->status = 1;
+        $orderItem->save();
+    }
+}
+
+
+function status($statusCode)
+{
+    switch ($statusCode)
+    {
+        case -1:
+            $msg = 'در انتظار پردخت';
+            break;
+        case -2:
+            $msg = 'خطای داخلی';
+            break;
+        case 1:
+            $msg = 'پرداخت شده - تاییدشده';
+            break;
+        case 2:
+            $msg = 'پرداخت شده - تاییدنشده';
+            break;
+        case 3:
+            $msg = 'لغوشده توسط کاربر';
+            break;
+        case 4:
+            $msg = '‌شماره کارت نامعتبر می‌باشد.';
+            break;
+        case 5:
+            $msg = '‌موجودی حساب کافی نمی‌باشد.';
+            break;
+        case 6:
+            $msg = 'رمز واردشده اشتباه می‌باشد.';
+            break;
+        case 7:
+            $msg = '‌تعداد درخواست‌ها بیش از حد مجاز می‌باشد.';
+            break;
+        case 8:
+            $msg = '‌تعداد پرداخت اینترنتی روزانه بیش از حد مجاز می‌باشد.';
+            break;
+        case 9:
+            $msg = 'مبلغ پرداخت اینترنتی روزانه بیش از حد مجاز می‌باشد.';
+            break;
+        case -1:
+            $msg = 'در انتظار پردخت';
+            break;
+        case 10:
+            $msg = '‌صادرکننده‌ی کارت نامعتبر می‌باشد.';
+            break;
+        case 11:
+            $msg = '‌خطای سوییچ';
+            break;
+        case 12:
+            $msg = 'کارت قابل دسترسی نمی‌باشد.';
+            break;
+        case 15:
+            $msg = 'تراکنش استرداد شده';
+            break;
+        case 16:
+            $msg = 'تراکنش در حال استرداد';
+            break;
+        case 18:
+            $msg = 'تراکنش ریورس شده';
+            break;
+        case 100:
+            $msg = 'با موفقیت تایید شد.';
+            break;
+        case 102:
+            $msg = 'merchantیافت نشد.';
+            break;
+        case 103:
+            $msg = 'merchantغیرفعال';
+            break;
+        case 104:
+            $msg = 'merchantنامعتبر';
+            break;
+        case 201:
+            $msg = 'قبلا تایید شده';
+            break;
+        case 202:
+            $msg = 'سفارش پرداخت نشده - ناموفق بوده';
+            break;
+        case 203:
+            $msg = 'trackIdنامعتبر می‌باشد.';
+            break;
+    }
+    return $msg;
+}
+
+function verifyPayment($trackId, $order_id)
+{
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://gateway.zibal.ir/v1/verify',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => '{
+  "merchant": "zibal",
+  "trackId": '.$trackId.'
+}',
+        CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json'
+        ),
+    ));
+
+    $response = curl_exec($curl);
+
+    curl_close($curl);
+    $response = json_decode($response);
+    updateStatusPayment($trackId,$response->result);
+    updateStatusOrder($order_id,$response->result);
+    with('swal-success','تغییر وضعیت انجام شد!');
+    return back();
+}
+
+function updateStatusPayment($trackId, $status)
+{
+    $payment = \App\Model\Payment::where('trackId',$trackId)->get()[0];
+    $payment->status = $status;
+    $payment->save();
+}
+
+function updateStatusOrder($order_id, $status)
+{
+    $order = Order::find($order_id);
+    $order->payment_status = $status;
+    $order->save();
 }

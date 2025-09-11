@@ -8,11 +8,11 @@
 
     <div class="container-xxl py-5 bg-dark hero-header mb-5">
         <div class="container text-center my-5 pt-5 pb-4">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">Services</h1>
+            <h1 class="display-3 text-white mb-3 animated slideInDown">سرویس ها</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center text-uppercase">
-                    <li class="breadcrumb-item"><a href="<?= route('index') ?>">Home</a></li>
-                    <li class="breadcrumb-item text-white active" aria-current="page">Service</li>
+                    <li class="breadcrumb-item"><a href="<?= route('index') ?>">خانه</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">سرویس ها</li>
                 </ol>
             </nav>
         </div>
@@ -29,8 +29,8 @@
                     <div class="service-item rounded pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
-                            <h5>Master Chefs</h5>
-                            <p>Our chefs, with extensive experience and skills in the culinary world, are always striving to bring you a unique and memorable flavor using the finest ingredients.</p>
+                            <h5>استاد آشپزها</h5>
+                            <p>سرآشپزهای ما با تجربه و مهارت فراوان در دنیای آشپزی، همواره در تلاشند تا با استفاده از بهترین مواد اولیه، طعمی بی‌نظیر و به یاد ماندنی را برای شما به ارمغان بیاورند.</p>
                         </div>
                     </div>
                 </div>
@@ -38,8 +38,8 @@
                     <div class="service-item rounded pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-utensils text-primary mb-4"></i>
-                            <h5>Quality Food</h5>
-                            <p>Our dishes are made with the finest ingredients and cooked with precision to provide you with a delightful and unique experience. We prioritize quality and taste in every meal</p>
+                            <h5>غذای با کیفیت</h5>
+                            <p>غذاهای ما با بهترین مواد اولیه تهیه و با دقت پخته می‌شوند تا تجربه‌ای لذت‌بخش و بی‌نظیر را برای شما فراهم کنند. ما در هر وعده غذایی، کیفیت و طعم را در اولویت قرار می‌دهیم.</p>
                         </div>
                     </div>
                 </div>
@@ -47,8 +47,8 @@
                     <div class="service-item rounded pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-headset text-primary mb-4"></i>
-                            <h5>24/7 Service</h5>
-                            <p>With 24/7 service, we're always available to meet your needs at any time</p>
+                            <h5>خدمات تمام وقت</h5>
+                            <p>با خدمات ۲۴ ساعته، ما همیشه و در هر زمانی آماده پاسخگویی به نیازهای شما هستیم</p>
                         </div>
                     </div>
                 </div>
@@ -56,8 +56,8 @@
                     <div class="service-item rounded pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-cart-plus text-primary mb-4"></i>
-                            <h5>Online Order</h5>
-                            <p>We provide fast and convenient online ordering services, ensuring a seamless and reliable shopping experience. Our goal is to offer the best products at the best prices</p>
+                            <h5>سفارش آنلاین</h5>
+                            <p>ما خدمات سفارش آنلاین سریع و راحت را ارائه می‌دهیم و یک تجربه خرید یکپارچه و قابل اعتماد را تضمین می‌کنیم. هدف ما ارائه بهترین محصولات با بهترین قیمت‌ها است.</p>
                         </div>
                     </div>
                 </div>
@@ -65,6 +65,5 @@
         </div>
     </div>
     <!-- Service End -->
-
 
 @endsection

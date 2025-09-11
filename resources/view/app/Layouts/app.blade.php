@@ -21,14 +21,14 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="<?= route('auth.login.show') ?>" class="nav-item nav-link <?= currentUrl() == route('my.panel.index') ? 'active' : '' ?>">login</a>
-                        <a href="<?= route('my.panel.index') ?>" class="nav-item nav-link <?= currentUrl() == route('my.panel.index') ? 'active' : '' ?>">panel</a>
-                        <a href="<?= route('index') ?>" class="nav-item nav-link <?= currentUrl() == route('index') ? 'active' : '' ?>">Home</a>
-                        <a href="<?= route('about') ?>" class="nav-item nav-link <?= currentUrl() == route('about') ? 'active' : '' ?>">About</a>
-                        <a href="<?= route('services') ?>" class="nav-item nav-link <?= currentUrl() == route('services') ? 'active' : '' ?>">Service</a>
-                        <a href="<?= route('menu') ?>" class="nav-item nav-link <?= currentUrl() == route('menu') ? 'active' : '' ?>">Menu</a>
-                        <a href="<?= route('contact') ?>" class="nav-item nav-link <?= currentUrl() == route('contact') ? 'active' : '' ?>">Contact</a>
-                        <a href="<?= route('booking') ?>" class="nav-item nav-link <?= currentUrl() == route('booking') ? 'active' : '' ?>">Book A Table</a>
+                        <a href="<?= route('auth.login.show') ?>" class="nav-item nav-link <?= currentUrl() == route('my.panel.index') ? 'active' : '' ?>">ورود</a>
+                        <a href="<?= route('my.panel.index') ?>" class="nav-item nav-link <?= currentUrl() == route('my.panel.index') ? 'active' : '' ?>">پنل کاربری</a>
+                        <a href="<?= route('about') ?>" class="nav-item nav-link <?= currentUrl() == route('about') ? 'active' : '' ?>">درباره ما</a>
+                        <a href="<?= route('contact') ?>" class="nav-item nav-link <?= currentUrl() == route('contact') ? 'active' : '' ?>">تماس با ما</a>
+                        <a href="<?= route('services') ?>" class="nav-item nav-link <?= currentUrl() == route('services') ? 'active' : '' ?>">سرویس ها</a>
+                        <a href="<?= route('booking') ?>" class="nav-item nav-link <?= currentUrl() == route('booking') ? 'active' : '' ?>">رزرو میز</a>
+                        <a href="<?= route('menu') ?>" class="nav-item nav-link <?= currentUrl() == route('menu') ? 'active' : '' ?>">منو</a>
+                        <a href="<?= route('index') ?>" class="nav-item nav-link <?= currentUrl() == route('index') ? 'active' : '' ?>">خانه</a>
                         <button id="openCart" type="button" data-toggle="modal" data-target="#cartModal" class="btn btn-cart btn-primary  mt-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart" viewBox="0 0 20 16">
                                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
@@ -84,12 +84,12 @@
                     <div class="row g-5">
                         <div class="col-lg-3 col-md-6">
                             <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Company</h4>
-                            <a class="btn btn-link" href="<?= route('index') ?>">Home</a>
-                            <a class="btn btn-link" href="<?= route('about') ?>">About Us</a>
-                            <a class="btn btn-link" href="<?= route('services') ?>">Reservation</a>
-                            <a class="btn btn-link" href="<?= route('menu') ?>">Menu</a>
-                            <a class="btn btn-link" href="<?= route('contact') ?>">Contact Us</a>
-                            <a class="btn btn-link" href="<?= route('booking') ?>">booking</a>
+                            <a class="btn btn-link" href="<?= route('index') ?>">خانه</a>
+                            <a class="btn btn-link" href="<?= route('about') ?>">درباره ما</a>
+                            <a class="btn btn-link" href="<?= route('services') ?>">سرویس ها</a>
+                            <a class="btn btn-link" href="<?= route('menu') ?>">منو</a>
+                            <a class="btn btn-link" href="<?= route('contact') ?>">تماس با ما</a>
+                            <a class="btn btn-link" href="<?= route('booking') ?>">رزرو</a>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
@@ -102,18 +102,18 @@
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>
-                            <h5 class="text-light fw-normal">Monday - Saturday</h5>
+                            <h5 class="text-light fw-normal">شنبه - پنج شنبه </h5>
                             <p>09AM - 09PM</p>
-                            <h5 class="text-light fw-normal">Sunday</h5>
+                            <h5 class="text-light fw-normal">جمعه</h5>
                             <p>10AM - 08PM</p>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>
-                            <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                            <p>برای عضویت در خبرنامه، ایمیل خود را وارد کنید.</p>
                             <div class="position-relative mx-auto" style="max-width: 400px;">
                                 <form method="post" action="<?= route('newsLetter') ?>">
-                                    <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" name="email" placeholder="Your email">
-                                    <button type="submit" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                                    <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" name="email" placeholder="ایمیل شما ">
+                                    <button type="submit" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">عضویت</button>
                                 </form>
                             </div>
                         </div>

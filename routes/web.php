@@ -130,6 +130,7 @@ Route::get("/admin/orders/delivery/{id}","admin\OrderController@delivery","admin
 // admin-payment
 Route::get("/admin/payments","admin\PaymentController@index","admin.payments.index");
 Route::get("/admin/payment/confirmed/{id}","admin\PaymentController@confirmed","admin.payments.confirmed");
+Route::get("/admin/payment/verify/{id}","admin\PaymentController@verify","admin.payments.verify");
 
 
 // admin-bookings
