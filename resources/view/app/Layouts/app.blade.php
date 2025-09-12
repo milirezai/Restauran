@@ -36,7 +36,7 @@
                             <?= $allNumberItems ?>
                         </button>
                         <section class="cart-modal">
-                            <button id="closeCart" class="btn btn-danger btn-cart">close</button>
+                            <button id="closeCart" class="btn btn-danger btn-cart">بستن</button>
 
                             <div class="items">
                                 <?php foreach ($carts as $cart) { ?>
@@ -45,7 +45,7 @@
                                     <div class="item-option">
                                         <div class="price-name border-bottom">
                                             <h4><?= $cart->product()->name ?></h4>
-                                            <h5 class="text-primary"> $ <?= $cart->price() ?></h5>
+                                            <h5 class="text-primary"> تومان <?= $cart->price() ?></h5>
                                         </div>
                                         <div class="remove-add">
                                             <div class="options-item-all">
@@ -64,8 +64,8 @@
                             </div>
 
                             <div class="price">
-                                <button class="btn btn-primary btn-cart"> $ <?= $totalPrice ?></button>
-                                <a href="<?= route('cart.showCart') ?>" class="btn btn-success btn-cart">show cart</a>
+                                <button class="btn btn-primary btn-cart"> تومان <?= $totalPrice ?></button>
+                                <a href="<?= route('cart.showCart') ?>" class="btn btn-success btn-cart">سبد خرید</a>
                             </div>
 
                         </section>

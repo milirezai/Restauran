@@ -27,8 +27,6 @@ Route::post('/contact','HomeController@storeContact','contact.store');
 // footer-news-letter
 Route::post('/news-letter','HomeController@newsLetter','newsLetter');
 
-
-
 // user-panel
 Route::get('/my-panel','UserController@index','my.panel.index');
 Route::get('/my-panel/info','UserController@info','my.panel.info');
@@ -47,9 +45,6 @@ Route::get('/cart','CartController@cart','cart.showCart');
 Route::get('/payment','PaymentController@payment','payment');
 Route::get('/payment/verify','PaymentController@verify','payment.verify');
 
-
-
-
 // auth
 Route::get("/register","auth\RegisterController@show","auth.register.show");
 Route::post("/register","auth\RegisterController@register","auth.register");
@@ -61,21 +56,6 @@ Route::post("/forgot","auth\ForgotController@forgot","auth.forgot");
 Route::get("/reset-password/{token}","auth\ResetPasswordController@show","auth.reset-password.show");
 Route::post("/reset-password/{token}","auth\ResetPasswordController@resetPassword","auth.reset-password");
 Route::get("/logout","auth\LogoutController@logout","auth.logout");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // admin
 Route::get('/admin','admin\AdminController@index','admin.index');
@@ -121,7 +101,6 @@ Route::get('/admin/contact/message/delete/{id}','admin\ContactController@destroy
 Route::get("/admin/users","admin\UserController@index","admin.users.index");
 Route::get("/admin/users/status/{id}","admin\UserController@status","admin.users.status");
 
-
 // admin-orders
 Route::get("/admin/orders","admin\OrderController@index","admin.orders.index");
 Route::get("/admin/orders/show/{id}","admin\OrderController@order","admin.orders.show");
@@ -131,7 +110,6 @@ Route::get("/admin/orders/delivery/{id}","admin\OrderController@delivery","admin
 Route::get("/admin/payments","admin\PaymentController@index","admin.payments.index");
 Route::get("/admin/payment/confirmed/{id}","admin\PaymentController@confirmed","admin.payments.confirmed");
 Route::get("/admin/payment/verify/{id}","admin\PaymentController@verify","admin.payments.verify");
-
 
 // admin-bookings
 Route::get("/admin/bookings","admin\BookingController@index","admin.bookings.index");

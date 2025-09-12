@@ -48,7 +48,7 @@
                                         <?php foreach ($order_items as $product ) { ?>
                                         <tr role="row" class="odd">
                                             <td><?= $product->product()->name ?></td>
-                                            <td><?= $product->product()->price ?> $ </td>
+                                            <td><?= $product->product()->price ?> تومان </td>
                                             <td><?= $product->number ?></td>
                                         </tr>
                                         <?php } ?>

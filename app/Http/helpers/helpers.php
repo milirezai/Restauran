@@ -103,13 +103,6 @@ function passwordRecoveryMsg($token)
     return $msg;
 }
 
-
-
-
-
-
-
-
 function addItemCart($id)
 {
     if (!itemExists($id))
@@ -342,7 +335,51 @@ function verifyOrderItems($orderId)
     }
 }
 
+function verifyPayment($trackId, $order_id)
+{
+    $curl = curl_init();
 
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://gateway.zibal.ir/v1/verify',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => '{
+  "merchant": "zibal",
+  "trackId": '.$trackId.'
+}',
+        CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json'
+        ),
+    ));
+
+    $response = curl_exec($curl);
+
+    curl_close($curl);
+    $response = json_decode($response);
+    updateStatusPayment($trackId,$response->result);
+    updateStatusOrder($order_id,$response->result);
+    with('swal-success','تغییر وضعیت انجام شد!');
+    return back();
+}
+
+function updateStatusPayment($trackId, $status)
+{
+    $payment = \App\Model\Payment::where('trackId',$trackId)->get()[0];
+    $payment->status = $status;
+    $payment->save();
+}
+
+function updateStatusOrder($order_id, $status)
+{
+    $order = Order::find($order_id);
+    $order->payment_status = $status;
+    $order->save();
+}
 function status($statusCode)
 {
     switch ($statusCode)
@@ -424,50 +461,4 @@ function status($statusCode)
             break;
     }
     return $msg;
-}
-
-function verifyPayment($trackId, $order_id)
-{
-    $curl = curl_init();
-
-    curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://gateway.zibal.ir/v1/verify',
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => '',
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 0,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => 'POST',
-        CURLOPT_POSTFIELDS => '{
-  "merchant": "zibal",
-  "trackId": '.$trackId.'
-}',
-        CURLOPT_HTTPHEADER => array(
-            'Content-Type: application/json'
-        ),
-    ));
-
-    $response = curl_exec($curl);
-
-    curl_close($curl);
-    $response = json_decode($response);
-    updateStatusPayment($trackId,$response->result);
-    updateStatusOrder($order_id,$response->result);
-    with('swal-success','تغییر وضعیت انجام شد!');
-    return back();
-}
-
-function updateStatusPayment($trackId, $status)
-{
-    $payment = \App\Model\Payment::where('trackId',$trackId)->get()[0];
-    $payment->status = $status;
-    $payment->save();
-}
-
-function updateStatusOrder($order_id, $status)
-{
-    $order = Order::find($order_id);
-    $order->payment_status = $status;
-    $order->save();
 }

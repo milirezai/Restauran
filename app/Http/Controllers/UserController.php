@@ -12,13 +12,9 @@ class UserController extends Controller
     {
         if (Auth::check())
         {
-            if (Auth::user()->user_type != 'user' and Auth::user()->user_type == 'admin')
+            if (Auth::user()->user_type != 'user')
             {
                 return redirectRoute('admin.index');
-            }
-            else
-            {
-                return redirect('/login');
             }
         }
         else

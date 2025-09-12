@@ -8,11 +8,11 @@
 
         <div class="container-xxl py-5 bg-dark hero-header mb-5">
             <div class="container text-center my-5 pt-5 pb-4">
-                <h1 class="display-3 text-white mb-3 animated slideInDown">Cart</h1>
+                <h1 class="display-3 text-white mb-3 animated slideInDown">سبد خرید</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center text-uppercase">
-                        <li class="breadcrumb-item"><a href="<?= route('index') ?>">Home</a></li>
-                         <li class="breadcrumb-item text-white active" aria-current="page">Cart</li>
+                        <li class="breadcrumb-item"><a href="<?= route('index') ?>">خانه</a></li>
+                         <li class="breadcrumb-item text-white active" aria-current="page">سبد خرید</li>
                     </ol>
                 </nav>
             </div>
@@ -27,11 +27,11 @@
                     <h5 class="section-title ff-secondary text-center text-primary fw-normal">Cart</h5>
                     <div class="cart-payment">
                         <div class="count-order-item">
-                            <h6>Products price (<?= $allNumberItems ?>)</h6>
-                            <h5> $ <?= $totalPrice ?> </h5>
+                            <h6>محصول (<?= $allNumberItems ?>)</h6>
+                            <h5> تومان <?= $totalPrice ?> </h5>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <a href="<?= route('payment') ?>" class="btn btn-success btn-order-registration">Finalize order</a>
+                            <a href="<?= route('payment') ?>" class="btn btn-success btn-order-registration">پرداخت</a>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span><?= $cart->product()->name ?></span>
-                                                <span class="text-primary"> $ <?= $cart->price() ?></span>
+                                                <span class="text-primary"> تومان <?= $cart->price() ?></span>
                                             </h5>
                                             <h6 class="d-flex justify-content-between">
                                                 <small class="fst-italic"><?= $cart->product()->name ?></small>

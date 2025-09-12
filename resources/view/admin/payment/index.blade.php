@@ -55,7 +55,7 @@
                                                 <?php } else { ?>
                                                 <a href="<?= route('admin.payments.confirmed',[$payment->id]) ?>" class="btn btn-success">تایید</a>
                                                 <?php } ?>
-                                                <a href="<?= route('admin.payments.verify',[$payment->id])?>" class="btn btn-success mt-2">verfiy</a>
+                                                <a href="<?= route('admin.payments.verify',[$payment->id])?>" class="btn btn-success mt-2">استعلام پرداخت</a>
                                             </td>
                                         </tr>
                                         <?php } ?>
